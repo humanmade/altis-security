@@ -1,0 +1,20 @@
+{
+	"name": "humanmade/security",
+	"description": "Human Made Platform Secutiry",
+	"type": "library",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Human Made",
+			"email": "hello@humanmade.com"
+		}
+	],
+	"autoload": {
+		"files": [
+			"load.php"
+		]
+	},
+	"require": {
+
+	}
+}
