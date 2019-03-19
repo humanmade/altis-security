@@ -13,7 +13,7 @@ add_action( 'hm-platform.modules.init', function () {
 		'require-login'             => ! in_array( Platform\get_environment_type(), [ 'production', 'local' ], true ),
 		'audit-log'                 => true,
 		'2-factor-authentication'   => true,
-		'minimum-password-strength' => 3,
+		'minimum-password-strength' => 2,
 	];
 	Platform\register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
 } );
