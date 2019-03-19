@@ -17,6 +17,7 @@
 	"require": {
 		"humanmade/stream": "dev-build",
 		"humanmade/two-factor": "dev-force-2fa",
-		"humanmade/require-login": "^1.0.0"
+		"humanmade/require-login": "^1.0.0",
+		"bjeavons/zxcvbn-php": "^0.4.0"
 	}
 }
