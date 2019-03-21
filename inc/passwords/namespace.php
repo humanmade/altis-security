@@ -20,7 +20,7 @@ function bootstrap() {
  *
  * @return int
  */
-function get_minimum_strength() {
+function get_minimum_strength() : int {
 	$config = get_config()['modules']['security'];
 
 	/**
