@@ -34,7 +34,7 @@ function get_minimum_strength() {
 	 * - 3 = "Medium"
 	 * - 4 = "Strong"
 	 *
-	 * @param int $minimum_strength Minimum required strength. Defaults is 3.
+	 * @param int $minimum_strength Minimum required strength. Default is 3.
 	 */
 	return apply_filters( 'hm-platform.security.passwords.minimum_strength', $config['minimum-password-strength'] );
 }
