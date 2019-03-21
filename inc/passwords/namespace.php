@@ -111,7 +111,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
  * @param WP_Error $errors Error object to add error to.
  */
 function add_strength_error( WP_Error $errors ) {
-	$errors->add( 'pass', __( '<strong>ERROR</strong>: Please use a stronger password.' ), array( 'form-field' => 'pass1' ) );
+	$errors->add( 'pass', __( '<strong>ERROR</strong>: Please use a stronger password.', 'hm-platform' ), [ 'form-field' => 'pass1' ] );
 }
 
 /**
