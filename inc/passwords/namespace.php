@@ -63,6 +63,11 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	// Add extra data to password strength checks.
 	// (Matches list in password-strength-meter.js)
 	$user = get_user_by( 'login', $user_login );
+	if ( empty( $user ) ) {
+		// No user found.
+		return;
+	}
+
 	$extra_data = [
 		$user->user_login,
 		$user->first_name,
