@@ -68,9 +68,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 
 	$checker = new Zxcvbn();
 	$results = $checker->passwordStrength( $pass1, $extra_data );
-	$strength = $results['score'];
-
-	$is_weak = $strength < get_minimum_strength();
+	$is_weak = $results['score'] < get_minimum_strength();
 
 	/**
 	 * Filter whether a password is considered weak.
