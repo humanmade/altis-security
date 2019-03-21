@@ -18,7 +18,15 @@ function bootstrap() {
 /**
  * Get minimum required strength for passwords.
  *
- * @return int
+ * Gets the minimum required "score" for passwords. The score corresponds to
+ * the following UI strings:
+ *
+ * - 1 = "Very Weak"
+ * - 2 = "Weak"
+ * - 3 = "Medium"
+ * - 4 = "Strong"
+ *
+ * @return int Minimum required strength
  */
 function get_minimum_strength() : int {
 	$config = get_config()['modules']['security'];
