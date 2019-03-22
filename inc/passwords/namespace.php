@@ -44,7 +44,7 @@ function get_minimum_strength() : int {
 	 *
 	 * @param int $minimum_strength Minimum required strength. Default is 3.
 	 */
-	return apply_filters( 'hm-platform.security.passwords.minimum_strength', $config['minimum-password-strength'] );
+	return apply_filters( 'hm_platform.security.passwords.minimum_strength', $config['minimum-password-strength'] );
 }
 
 /**
@@ -91,7 +91,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	 * @param WP_User $user User the password is being changed for.
 	 * @param array $results Results from Zxcvbn's check.
 	 */
-	$is_weak = apply_filters( 'hm-platform.security.passwords.is_weak', $is_weak, $pass1, $user, $results );
+	$is_weak = apply_filters( 'hm_platform.security.passwords.is_weak', $is_weak, $pass1, $user, $results );
 	if ( ! $is_weak ) {
 		// Password is strong enough, allow it.
 		return;

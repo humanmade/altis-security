@@ -18,7 +18,7 @@ To disable the minimum password strength checks, set the `modules.security.minim
 
 ## Additional strength checks
 
-To add additional strength checks, a `hm-platform.security.passwords.is_weak` filter is provided. This filters the boolean `$is_weak` which can be set to `true` to reject a password.
+To add additional strength checks, a `hm_platform.security.passwords.is_weak` filter is provided. This filters the boolean `$is_weak` which can be set to `true` to reject a password.
 
 For example, to reject any passwords which contain the word "human":
 
