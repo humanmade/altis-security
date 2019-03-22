@@ -99,7 +99,8 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 
 	// Weak password. Clear both password fields to halt update, and add our
 	// custom error.
-	$pass1 = $pass2 = null;
+	$pass1 = null;
+	$pass2 = null;
 	add_action( 'user_profile_update_errors', __NAMESPACE__ . '\\add_strength_error' );
 }
 
