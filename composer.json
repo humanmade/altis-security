@@ -1,6 +1,6 @@
 {
 	"name": "humanmade/security",
-	"description": "Human Made Platform Secutiry",
+	"description": "Human Made Platform Security",
 	"type": "library",
 	"license": "GPL-2.0-or-later",
 	"authors": [
@@ -12,7 +12,8 @@
 	"autoload": {
 		"files": [
 			"load.php"
-		]
+		],
+		"classmap": [ "inc/", "inc/stream/" ]
 	},
 	"require": {
 		"humanmade/stream": "dev-build",
