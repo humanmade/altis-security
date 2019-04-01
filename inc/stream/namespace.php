@@ -25,7 +25,6 @@ function bootstrap() {
 
 	add_filter( 'site_option_wp_stream_network', __NAMESPACE__ . '\\default_stream_network_options' );
 	add_filter( 'default_site_option_wp_stream_network', __NAMESPACE__ . '\\default_stream_network_options' );
-	add_filter( 'wp_stream_db_driver', __NAMESPACE__ . '\\set_stream_db_driver' );
 	add_action( 'network_admin_menu', function () {
 		/**
 		 * @var \Stream\Plugin
@@ -40,8 +39,4 @@ function default_stream_network_options( $options ) : array {
 	$options['general_site_access'] = 0;
 	$options['general_keep_records_indefinitely'] = true;
 	return $options;
-}
-
-function set_stream_db_driver( string $db_driver ) : string {
-	return __NAMESPACE__ . '\\CloudWatch_Driver';
 }
