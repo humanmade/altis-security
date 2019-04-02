@@ -33,10 +33,10 @@ function default_stream_network_options( $options ) : array {
  * but this is the only way to trigger Stream's Network Admin configuration
  * option.
  *
- * @param array $plugins
+ * @param array|bool $plugins
  * @return array
  */
-function set_stream_networked_activated( array $plugins ) : array {
+function set_stream_networked_activated( $plugins ) : array {
 	$plugins['stream/stream.php'] = true;
 	return $plugins;
 }
