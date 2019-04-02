@@ -4,7 +4,7 @@ All change activity made in the CMS is tracked in the Audit Log. This provides a
 
 Audit logging base functionality is provided by the [Stream](https://github.com/xwp/stream/) plugin.
 
-The Audit Log is tamper resistent. Once entries have been added to the Audit Log, they can not be removed. This is to preserve knowledge of historical changes for auditing and compliance purposes. The Cloud infrastructure application layer has no permissions to delete or modify records, therefore it's even resilient to modification from rogue custom code.
+The Audit Log is tamper resistant. Once entries have been added to the Audit Log, they can not be removed. This is to preserve knowledge of historical changes for auditing and compliance purposes. The Cloud infrastructure application layer has no permissions to delete or modify records, therefore it's also resilient to modification from rogue custom code.
 
 The Audit Log will also be persistent across site restores, overrides and imports.
 
