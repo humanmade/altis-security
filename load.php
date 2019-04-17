@@ -5,6 +5,7 @@ namespace HM\Platform\Security;
 use HM\Platform;
 
 require_once __DIR__ . '/inc/namespace.php';
+require_once __DIR__ . '/inc/passwords/namespace.php';
 
 // Don't self-initialize if this is not a Platform execution.
 if ( ! function_exists( 'add_action' ) ) {
@@ -13,10 +14,11 @@ if ( ! function_exists( 'add_action' ) ) {
 
 add_action( 'hm-platform.modules.init', function () {
 	$default_settings = [
-		'enabled'                 => true,
-		'require-login'           => ! in_array( Platform\get_environment_type(), [ 'production', 'local' ], true ),
-		'audit-log'               => true,
-		'2-factor-authentication' => true,
+		'enabled'                   => true,
+		'require-login'             => ! in_array( Platform\get_environment_type(), [ 'production', 'local' ], true ),
+		'audit-log'                 => true,
+		'2-factor-authentication'   => true,
+		'minimum-password-strength' => 2,
 	];
 	Platform\register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
 } );

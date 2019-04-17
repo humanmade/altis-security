@@ -24,6 +24,10 @@ function on_plugins_loaded() {
 		add_filter( 'two_factor_providers', __NAMESPACE__ . '\\remove_2fa_dummy_provider' );
 		require_once ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
 	}
+
+	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
+		Passwords\bootstrap();
+	}
 }
 
 /**
