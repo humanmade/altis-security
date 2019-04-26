@@ -18,6 +18,7 @@
 		]
 	},
 	"require": {
+		"php": ">=7.1",
 		"humanmade/stream": "3.2.3",
 		"humanmade/two-factor": "dev-force-2fa",
 		"humanmade/require-login": "1.0.0",
