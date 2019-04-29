@@ -62,18 +62,18 @@ function remove_stream_admin_pages() {
 function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 	$wp_admin_bar->remove_menu( 'network-admin-stream' );
 	$href = add_query_arg(
-		array(
+		[
 			'page' => wp_stream_get_instance()->admin->records_page_slug,
-		),
+		],
 		network_admin_url( wp_stream_get_instance()->admin->admin_parent_page )
 	);
 
 	$wp_admin_bar->add_menu(
-		array(
+		[
 			'id'     => 'network-admin-stream',
 			'parent' => 'network-admin',
 			'title'  => esc_html__( 'Audit Log', 'hm-platform' ),
 			'href'   => esc_url( $href ),
-		)
+		]
 	);
 }
