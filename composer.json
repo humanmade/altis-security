@@ -1,6 +1,6 @@
 {
 	"name": "humanmade/security",
-	"description": "Human Made Platform Security",
+	"description": "Security module for Altis",
 	"type": "library",
 	"license": "GPL-2.0-or-later",
 	"authors": [
