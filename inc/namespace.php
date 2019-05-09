@@ -1,9 +1,9 @@
 <?php
 
-namespace HM\Platform\Security;
+namespace Altis\Security;
 
-use const HM\Platform\ROOT_DIR;
-use function HM\Platform\get_config;
+use const Altis\ROOT_DIR;
+use function Altis\get_config;
 
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
