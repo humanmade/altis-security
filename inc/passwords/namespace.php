@@ -1,8 +1,8 @@
 <?php
 
-namespace HM\Platform\Security\Passwords;
+namespace Altis\Security\Passwords;
 
-use function HM\Platform\get_config;
+use function Altis\get_config;
 use WP_Error;
 use ZxcvbnPhp\Zxcvbn;
 
@@ -44,7 +44,7 @@ function get_minimum_strength() : int {
 	 *
 	 * @param int $minimum_strength Minimum required strength. Default is 2.
 	 */
-	return apply_filters( 'hm_platform.security.passwords.minimum_strength', $config['minimum-password-strength'] );
+	return apply_filters( 'altis.security.passwords.minimum_strength', $config['minimum-password-strength'] );
 }
 
 /**
@@ -91,7 +91,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	 * @param WP_User $user User the password is being changed for.
 	 * @param array $results Results from Zxcvbn's check.
 	 */
-	$is_weak = apply_filters( 'hm_platform.security.passwords.is_weak', $is_weak, $pass1, $user, $results );
+	$is_weak = apply_filters( 'altis.security.passwords.is_weak', $is_weak, $pass1, $user, $results );
 	if ( ! $is_weak ) {
 		// Password is strong enough, allow it.
 		return;
@@ -112,7 +112,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
  * @param WP_Error $errors Error object to add error to.
  */
 function add_strength_error( WP_Error $errors ) {
-	$errors->add( 'pass', __( '<strong>ERROR</strong>: Please use a stronger password.', 'hm-platform' ), [ 'form-field' => 'pass1' ] );
+	$errors->add( 'pass', __( '<strong>ERROR</strong>: Please use a stronger password.', 'altis' ), [ 'form-field' => 'pass1' ] );
 }
 
 /**

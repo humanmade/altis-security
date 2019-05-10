@@ -1,8 +1,8 @@
 <?php
 
-namespace HM\Platform\Security\Stream;
+namespace Altis\Security\Stream;
 
-use const HM\Platform\ROOT_DIR;
+use const Altis\ROOT_DIR;
 use WP_Admin_Bar;
 
 function bootstrap() {
@@ -72,7 +72,7 @@ function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 		[
 			'id'     => 'network-admin-stream',
 			'parent' => 'network-admin',
-			'title'  => esc_html__( 'Audit Log', 'hm-platform' ),
+			'title'  => esc_html__( 'Audit Log', 'altis' ),
 			'href'   => esc_url( $href ),
 		]
 	);

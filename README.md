@@ -2,7 +2,7 @@
 	<tr>
 		<td align="left" width="70">
 			<strong>Security</strong><br />
-			Security module for Platform.
+			Security module for Altis.
 		</td>
 		<td align="right" width="20%">
 		</td>
@@ -19,6 +19,4 @@
 
 # Security
 
-The security module provides high-level security focused features to the Platform. It is not meant to "make Platform secure", and all other modules and components of Platform should be secure in their own right. This module is concerned with security features such as Multi Factor Authentication, Password Strength Rules, Password Expiration, Audit Logging etc.
-
-
+The security module provides high-level security focused features to Altis. It is not meant to "make Altis secure", and all other modules and components of Altis should be secure in their own right. This module is concerned with security features such as Multi Factor Authentication, Password Strength Rules, Password Expiration, Audit Logging etc.

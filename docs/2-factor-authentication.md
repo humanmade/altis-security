@@ -1,6 +1,6 @@
 # Two Factor Authentication
 
-For increased security of user authentication, Platform supports the use of a second factor to authorize the login request. The Two Factor Authentication feature is enabled by default, though not required for all users.
+For increased security of user authentication, Altis supports the use of a second factor to authorize the login request. The Two Factor Authentication feature is enabled by default, though not required for all users.
 
 To disable Two Factor Authentication, set the `modules.security.2-factor-authentication` setting to `false`.
 
