@@ -1,5 +1,5 @@
 {
-	"name": "humanmade/security",
+	"name": "altis/security",
 	"description": "Security module for Altis",
 	"type": "library",
 	"license": "GPL-2.0-or-later",
