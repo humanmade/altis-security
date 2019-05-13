@@ -60,6 +60,10 @@ function remove_stream_admin_pages() {
  * @param WP_Admin_Bar $wp_admin_bar
  */
 function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
+	if ( empty( wp_stream_get_instance()->admin ) ) {
+		return;
+	}
+
 	$wp_admin_bar->remove_menu( 'network-admin-stream' );
 	$href = add_query_arg(
 		[
