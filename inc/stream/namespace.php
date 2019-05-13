@@ -60,6 +60,8 @@ function remove_stream_admin_pages() {
  * @param WP_Admin_Bar $wp_admin_bar
  */
 function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
+	// Menu item is only registered inside the admin, so don't try and replace
+	// it if it hasn't been registered.
 	if ( empty( wp_stream_get_instance()->admin ) ) {
 		return;
 	}
