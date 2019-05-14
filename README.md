@@ -2,7 +2,7 @@
 
 <p align="center">Security features for <strong><a href="https://altis-dxp.com/">Altis</a></strong>.</p>
 
-<p align="center"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/altis/security.svg"></p>
+<p align="center"><a href="https://packagist.org/packages/altis/security"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/altis/security.svg"></a></p>
 
 
 # Security
