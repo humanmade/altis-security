@@ -1,6 +1,6 @@
 <?php
 
-namespace Altis\Security;
+namespace Altis\Security; // @codingStandardsIgnoreLine
 
 use function Altis\get_environment_type;
 use function Altis\register_module;
