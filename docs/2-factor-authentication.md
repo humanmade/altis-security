@@ -10,4 +10,33 @@ Two Factor methods can be configured by each user in their Edit Profile page in 
 
 ## Requiring Two Factor Authentication
 
-The site can be configured to require all users enable two factor authentication. This can be set via the Network Admin Settings screen, either for all users, or specific roles.
+The site can be configured to require all users enable two factor authentication, or set requirement options on a per-role basis. To require all users of the site enable two factor authentication set the `modules.security.2-factor-authentication.required` setting to `true`:
+
+```
+"altis": {
+	"modules": {
+		"security": {
+			"2-factor-authentication": {
+				"required": true
+			}
+		}
+	}
+}
+```
+
+Alternatively, to require two factor authentication only for specific user roles, define the roles in the `modules.security.2-factor-authentication.required` array:
+
+```
+"altis": {
+	"modules": {
+		"security": {
+			"2-factor-authentication": {
+				"required": [
+					"administrator",
+					"editor"
+				]
+			}
+		}
+	}
+}
+```
