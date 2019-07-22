@@ -22,6 +22,8 @@ function on_plugins_loaded() {
 
 	if ( ! empty( $config['2-factor-authentication'] ) ) {
 		add_filter( 'two_factor_providers', __NAMESPACE__ . '\\remove_2fa_dummy_provider' );
+		add_filter( 'two_factor_universally_forced', __NAMESPACE__ . '\\override_two_factor_universally_forced' );
+		add_filter( 'two_factor_forced_user_roles', __NAMESPACE__ . '\\override_two_factor_forced_user_roles' );
 		require_once ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
 	}
 
@@ -41,4 +43,35 @@ function remove_2fa_dummy_provider( array $providers ) : array {
 		unset( $providers['Two_Factor_Dummy'] );
 	}
 	return $providers;
+}
+
+/**
+ * Override the two factor forced setting with values from the Altis configuration.
+ *
+ * @param bool $is_forced
+ * @return bool
+ */
+function override_two_factor_universally_forced( bool $is_forced ) : bool {
+	$config = get_config()['modules']['security']['2-factor-authentication'];
+	if ( ! empty( $config['required'] ) && is_bool( $config['required'] ) ) {
+		return $config['required'];
+	}
+
+	return $is_forced;
+}
+
+/**
+ * Override the two factor forced setting for enabled roles with values
+ * from the Altis configuration.
+ *
+ * @param array|null $roles
+ * @return array|null
+ */
+function override_two_factor_forced_user_roles( $roles ) {
+	$config = get_config()['modules']['security']['2-factor-authentication'];
+	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
+		return $config['required'];
+	}
+
+	return $roles;
 }
