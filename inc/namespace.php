@@ -15,6 +15,7 @@ function on_plugins_loaded() {
 	if ( $config['require-login'] ) {
 		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
+
 	if ( $config['audit-log'] ) {
 		require_once __DIR__ . '/stream/namespace.php';
 		Stream\bootstrap();
