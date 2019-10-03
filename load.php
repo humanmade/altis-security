@@ -2,7 +2,6 @@
 
 namespace Altis\Security; // @codingStandardsIgnoreLine
 
-use function Altis\get_environment_type;
 use function Altis\register_module;
 
 require_once __DIR__ . '/inc/namespace.php';
@@ -16,7 +15,7 @@ if ( ! function_exists( 'add_action' ) ) {
 add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled'                   => true,
-		'require-login'             => ! in_array( get_environment_type(), [ 'production', 'local' ], true ),
+		'require-login'             => false,
 		'audit-log'                 => true,
 		'2-factor-authentication'   => true,
 		'minimum-password-strength' => 2,
