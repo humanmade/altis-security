@@ -4,6 +4,7 @@ namespace Altis\Security;
 
 use const Altis\ROOT_DIR;
 use function Altis\get_config;
+use function Altis\get_environment_type;
 
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
@@ -12,9 +13,10 @@ function bootstrap() {
 function on_plugins_loaded() {
 	$config = get_config()['modules']['security'];
 
-	if ( $config['require-login'] ) {
+	if ( ! is_site_public() ) {
 		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
+
 	if ( $config['audit-log'] ) {
 		require_once __DIR__ . '/stream/namespace.php';
 		Stream\bootstrap();
@@ -30,6 +32,32 @@ function on_plugins_loaded() {
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
 	}
+}
+
+/**
+ * Find out whether the site is/should be public.
+ *
+ * @return bool
+ */
+function is_site_public() : bool {
+
+	// Allow overrides from composer.json.
+	$config = get_config()['modules']['security'];
+	if ( $config['require-login'] ) {
+		return false;
+	}
+
+	// If this is a multisite installation, return whether the site is set to public.
+	if ( is_multisite() ) {
+		return get_site()->public;
+	}
+
+	// For single site installations, set defaults based on environment.
+	if ( in_array( get_environment_type(), [ 'production', 'local' ], true ) ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**
