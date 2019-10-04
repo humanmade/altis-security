@@ -47,17 +47,8 @@ function is_site_public() : bool {
 		return false;
 	}
 
-	// If this is a multisite installation, return whether the site is set to public.
-	if ( is_multisite() ) {
-		return get_site()->public;
-	}
-
-	// For single site installations, set defaults based on environment.
-	if ( in_array( get_environment_type(), [ 'production', 'local' ], true ) ) {
-		return true;
-	}
-
-	return false;
+	// If there are no overrides, return whether the site is set to public.
+	return get_site()->public;
 }
 
 /**
