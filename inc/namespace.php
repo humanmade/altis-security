@@ -48,7 +48,7 @@ function is_site_public() : bool {
 	}
 
 	// If there are no overrides, return whether the site is set to public.
-	return get_site()->public;
+	return get_site()->public ?? false;
 }
 
 /**
