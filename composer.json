@@ -11,10 +11,12 @@
 	],
 	"autoload": {
 		"files": [
-			"load.php"
+			"inc/namespace.php",
+			"inc/passwords/namespace.php"
 		],
 		"classmap": [
-			"inc/", "inc/stream/"
+			"inc/",
+			"inc/stream/"
 		]
 	},
 	"require": {
@@ -23,5 +25,8 @@
 		"humanmade/two-factor": "0.2",
 		"humanmade/require-login": "1.0.0",
 		"bjeavons/zxcvbn-php": "^0.4.0"
+	},
+	"extra": {
+		"altis": {}
 	}
 }
