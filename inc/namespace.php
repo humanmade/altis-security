@@ -40,6 +40,10 @@ function on_plugins_loaded() {
  * @return bool
  */
 function is_site_public() : bool {
+	// Allow public access during the install process.
+	if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
+		return true;
+	}
 
 	// Allow overrides from composer.json.
 	$config = get_config()['modules']['security'];
