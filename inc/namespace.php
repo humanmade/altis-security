@@ -13,6 +13,10 @@ function bootstrap() {
 function on_plugins_loaded() {
 	$config = get_config()['modules']['security'];
 
+	if ( $config['browser'] ) {
+		Browser\bootstrap( $config['browser'] );
+	}
+
 	if ( ! is_site_public() ) {
 		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
