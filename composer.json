@@ -19,13 +19,6 @@
 			"inc/stream/"
 		]
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:humanmade/hm-limit-login-attempts.git"
-		}
-
-	],
 	"require": {
 		"php": ">=7.1",
 		"humanmade/stream": "3.3.0",
