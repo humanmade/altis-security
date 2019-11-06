@@ -12,7 +12,8 @@
 	"autoload": {
 		"files": [
 			"inc/namespace.php",
-			"inc/passwords/namespace.php"
+			"inc/passwords/namespace.php",
+			"inc/limit_login_attempts/namespace.php"
 		],
 		"classmap": [
 			"inc/",

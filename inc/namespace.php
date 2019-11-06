@@ -4,7 +4,6 @@ namespace Altis\Security;
 
 use const Altis\ROOT_DIR;
 use function Altis\get_config;
-use function Altis\get_environment_type;
 
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
@@ -31,6 +30,10 @@ function on_plugins_loaded() {
 
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
+	}
+
+	if ( $config['limit-login-attempts'] ) {
+		Limit_Login_Attempts\bootstrap();
 	}
 }
 

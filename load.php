@@ -11,6 +11,7 @@ add_action( 'altis.modules.init', function () {
 		'audit-log'                 => true,
 		'2-factor-authentication'   => true,
 		'minimum-password-strength' => 2,
+		'limit-login-attempts'      => true,
 	];
 	register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
 } );
