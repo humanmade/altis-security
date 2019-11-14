@@ -21,6 +21,7 @@
 	},
 	"require": {
 		"php": ">=7.1",
+		"altis/browser-security": "^1.0.0",
 		"humanmade/stream": "3.3.0",
 		"humanmade/two-factor": "0.2",
 		"humanmade/require-login": "1.0.0",
