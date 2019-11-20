@@ -6,6 +6,10 @@ use const Altis\ROOT_DIR;
 use WP_Admin_Bar;
 
 function bootstrap() {
+	if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
+		return;
+	}
+
 	add_filter( 'wp_stream_admin_menu_title', function () : string {
 		return __( 'Audit Log' );
 	} );
