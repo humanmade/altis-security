@@ -12,6 +12,10 @@ function bootstrap() {
 function on_plugins_loaded() {
 	$config = get_config()['modules']['security'];
 
+	if ( $config['browser'] ) {
+		Browser\bootstrap( $config['browser'] );
+	}
+
 	if ( ! is_site_public() ) {
 		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
@@ -25,7 +29,9 @@ function on_plugins_loaded() {
 		add_filter( 'two_factor_providers', __NAMESPACE__ . '\\remove_2fa_dummy_provider' );
 		add_filter( 'two_factor_universally_forced', __NAMESPACE__ . '\\override_two_factor_universally_forced' );
 		add_filter( 'two_factor_forced_user_roles', __NAMESPACE__ . '\\override_two_factor_forced_user_roles' );
-		require_once ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
+		if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
+			require_once ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
+		}
 	}
 
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
