@@ -38,7 +38,7 @@ function on_plugins_loaded() {
 		Passwords\bootstrap();
 	}
 
-	if ( $config['limit-login-attempts'] ) {
+	if ( ! empty( $config['limit-login-attempts'] ) ) {
 		Limit_Login_Attempts\bootstrap();
 	}
 }
