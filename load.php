@@ -20,7 +20,7 @@ add_action( 'altis.modules.init', function () {
 			'cookies'             => 1,       // Also limit malformed/forged cookies?
 			'lockout_notify'      => 'log',   // Notify on lockout. Values: '', 'log', 'email', 'log,email'.
 			'notify_email_after'  => 4,       // If notify by email, do so after this number of lockouts.
-			'lockout_method'      => 'ip'     // Method to use for lockout.
+			'lockout_method'      => 'ip',    // Method to use for lockout.
 		],
 		'browser' => [
 			'automatic-integrity' => true,
