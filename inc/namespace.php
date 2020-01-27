@@ -19,6 +19,10 @@ function on_plugins_loaded() {
 
 	if ( ! is_site_public() ) {
 		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
+
+		if ( $config['php-basic-auth'] ) {
+			require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		}
 	}
 
 	if ( $config['audit-log'] ) {
