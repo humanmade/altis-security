@@ -21,6 +21,7 @@ add_action( 'altis.modules.init', function () {
 			'lockout_notify'      => 'log',   // Notify on lockout. Values: '', 'log', 'email', 'log,email'.
 			'notify_email_after'  => 4,       // If notify by email, do so after this number of lockouts.
 			'lockout_method'      => 'ip',    // Method to use for lockout.
+			'whitelisted_ips'     => [],      // Array of IP addresses to whitelist.
 		],
 		'browser' => [
 			'automatic-integrity' => true,

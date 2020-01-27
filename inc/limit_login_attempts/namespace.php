@@ -22,8 +22,16 @@ function bootstrap() {
 		// Otherwise, don't display admin page and use config values.
 		add_action( 'admin_menu', __NAMESPACE__ . '\\remove_admin_page', 99 );
 
+		if ( ! empty( $config['whitelisted_ips'] ) ) {
+			add_filter( 'hm_limit_login_whitelist_ip', __NAMESPACE__ . '\\check_whitelist', 10, 2 );
+		}
+
 		// Set pre_option filters on each config item.
 		foreach ( $config as $option_name => $option_value ) {
+			// Whitelisted IP's are used for the above filter, not options.
+			if ( $option_name === 'whitelisted_ips' ) {
+				continue;
+			}
 
 			// Only options that are not integers are `lockout_notify` and `lockout_method`.
 			if ( ! in_array( $option_name, [ 'lockout_notify', 'lockout_method' ], true ) ) {
@@ -37,6 +45,27 @@ function bootstrap() {
 	}
 }
 
+/**
+ * Check the current IP against the whitelisted IP's from the config.
+ *
+ * @param bool $allow Determines if the IP is allowed or not.
+ * @param string $ip  Current IP address to check.
+ *
+ * @return bool
+ */
+function check_whitelist( $allow, $ip ) {
+	$config = get_config()['modules']['security']['limit-login-attempts'];
+
+	if ( in_array( $ip, $config['whitelisted_ips'], true ) ) {
+		return true;
+	}
+
+	return $allow;
+}
+
+/**
+ * Removes the settings page from the admin menu.
+ */
 function remove_admin_page() {
 	remove_submenu_page( 'options-general.php', 'hm-limit-login-attempts' );
 }

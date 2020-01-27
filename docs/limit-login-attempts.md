@@ -28,7 +28,8 @@ To set the limit login attempts security settings, set values in your `composer.
 						"cookies": 1,              // Also limit malformed/forged cookies?
 						"lockout_notify": "log",   // Notify on lockout. Values: '', 'log', 'email', 'log,email'.
 						"notify_email_after": 4,   // If notify by email, do so after this number of lockouts.
-						"lockout_method": "ip"     // Method to use for lockout.
+						"lockout_method": "ip",    // Method to use for lockout.
+						"whitelisted_ips": [],     // Array of IP addresses to whitelist.
 					}
 				}
 			}
@@ -75,6 +76,10 @@ If `lockout_notify` set to either `email` or `log,email`, this setting is used t
 ### Lockout Method
 
 Setting to determine which method should be used to lock users out. Valid values are: `ip`, `username`, or `ip,username`. Defaults to `ip`.
+
+### Whitelisted IPs
+
+Setting to allow for whitelisting of IPs against the limit login functionality.
 
 ## Enable/Disable
 
