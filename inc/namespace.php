@@ -4,7 +4,6 @@ namespace Altis\Security;
 
 use const Altis\ROOT_DIR;
 use function Altis\get_config;
-use function Altis\get_environment_type;
 
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
