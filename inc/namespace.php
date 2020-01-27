@@ -18,10 +18,11 @@ function on_plugins_loaded() {
 	}
 
 	if ( ! is_site_public() ) {
-		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
-
+		// If PHP Basic Auth is enabled, require that instead of Require Login.
 		if ( $config['php-basic-auth'] ) {
 			require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		} else {
+			require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 		}
 	}
 
