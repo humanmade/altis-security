@@ -21,6 +21,7 @@ function on_plugins_loaded() {
 		// If PHP Basic Auth is enabled, require that instead of Require Login.
 		if ( $config['php-basic-auth'] ) {
 			require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+			PHP_Basic_Auth\bootstrap();
 		} else {
 			require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 		}
