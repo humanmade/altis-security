@@ -38,7 +38,7 @@ To set the limit login attempts security settings, set values in your `composer.
 ```
 ## Configuration settings
 
-By setting the configuration settings in your `composer.json`, we lock the settings to those values and hide the admin settings page.
+By placing the configuration settings in your `composer.json`, the settings are locked to those values and the admin settings page is hidden.
 
 ### Allowed Retries
 
