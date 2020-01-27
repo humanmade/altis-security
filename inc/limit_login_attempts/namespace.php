@@ -24,7 +24,7 @@ function bootstrap() {
 
 		// Set pre_option filters on each config item.
 		foreach ( $config as $option_name => $option_value ) {
-			add_filter( 'pre_option_hm_limit_login_' . $option_name, function() {
+			add_filter( 'pre_option_hm_limit_login_' . $option_name, function () {
 				return $option_value;
 			} );
 		}
