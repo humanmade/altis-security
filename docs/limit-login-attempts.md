@@ -86,7 +86,7 @@ You can also disable the functionality altogether by setting `limit-login-attemp
 }
 ```
 
-If `true` provided instead of a configuration object, then the plugin will use the same defaults but are able to be overridden via the settings page in the admin under `Settings -> Limit Logins`.
+If `true` provided instead of a configuration object, then the plugin will use the same defaults but are able to be overridden via the [settings page](internal://admin/options-general.php?page=hm-limit-login-attempts) in the admin.
 
 ```json
 {
