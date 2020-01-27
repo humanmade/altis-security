@@ -24,7 +24,7 @@ function bootstrap() {
 
 		// Set pre_option filters on each config item.
 		foreach ( $config as $option_name => $option_value ) {
-			
+
 			// Only options that are not integers are `lockout_notify` and `lockout_method`.
 			if ( ! in_array( $option_name, [ 'lockout_notify', 'lockout_method' ], true ) ) {
 				$option_value = intval( $option_value );
