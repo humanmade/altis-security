@@ -14,8 +14,7 @@ function bootstrap() {
  * composer.json configuration.
  */
 function filter_dev_env() {
-	// Collect the default settings and any environment overrides.
-	$default   = get_config()['modules']['security']['php-basic-auth'];
+	// Collect the environment overrides.
 	$env_local = get_config()['environments']['local']['security']['php-basic-auth'];
 	$env_dev   = get_config()['environments']['local']['security']['php-basic-auth'];
 	$env_stage = get_config()['environments']['local']['security']['php-basic-auth'];
@@ -62,8 +61,8 @@ function filter_dev_env() {
 		default:
 			// If we're in a development environment, default to enabling basic auth.
 			if ( in_array( get_environment_type(), [ 'development', 'staging' ] ) ) {
-				// Define the credentials from the config. If none were set, no creds will be defined.
-				define_credentials( $default );
+				// Use the default credentials from the config.
+				define_credentials( true );
 				return true;
 			}
 
@@ -80,8 +79,8 @@ function filter_dev_env() {
  *  determine the username and password constants.
  */
 function define_credentials( $environment ) {
-	// Bail if username and password was not configured for the environment.
-	if ( ! is_array( $environment ) ) {
+	// Get the default config values.
+	$default = get_config()['modules']['security']['php-basic-auth'];
 		return;
 	}
 
