@@ -98,7 +98,7 @@ function define_credentials( $environment ) {
 		return;
 	}
 
-	define( 'HM_BASIC_AUTH_USER', $environment['username'] );
-	define( 'HM_BASIC_AUTH_PW', $environment['password'] );
+	define( 'HM_BASIC_AUTH_USER', $credentials['username'] );
+	define( 'HM_BASIC_AUTH_PW', $credentials['password'] );
 }
 
