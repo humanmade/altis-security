@@ -2,6 +2,7 @@
 
 namespace Altis\Security;
 
+use Altis\Security\PHP_Basic_Auth;
 use const Altis\ROOT_DIR;
 use function Altis\get_config;
 
