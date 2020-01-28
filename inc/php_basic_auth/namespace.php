@@ -7,26 +7,90 @@ use function Altis\get_environment_type;
 
 function bootstrap() {
 	add_filter( 'hmauth_filter_on_dev_env', __NAMESPACE__ . '\\filter_dev_env' );
-
-	$config = get_config()['modules']['security']['php-basic-auth'];
-
-	if ( is_array( $config ) ) {
-		define( 'HM_BASIC_AUTH_USER', $config['username'] );
-		define( 'HM_BASIC_AUTH_PW', $config['password'] );
-	}
 }
 
+/**
+ * Conditionally short-circuit the basic authentication settings based on the
+ * composer.json configuration.
+ */
 function filter_dev_env() {
-	// Bail early for local environments.
-	if ( get_environment_type() === 'local' ) {
-		return false;
-	}
+	// Collect the default settings and any environment overrides.
+	$default   = get_config()['modules']['security']['php-basic-auth'];
+	$env_local = get_config()['environments']['local']['security']['php-basic-auth'];
+	$env_dev   = get_config()['environments']['local']['security']['php-basic-auth'];
+	$env_stage = get_config()['environments']['local']['security']['php-basic-auth'];
+	$env_prod  = get_config()['environments']['local']['security']['php-basic-auth'];
 
-	// Enable on all other non-production environments.
-	if ( ! get_environment_type() !== 'production' ) {
-		return true;
-	}
+	switch ( get_environment_type() ) {
+		case 'local':
+			// Local environments are false by default, so check if this has been overridden.
+			if ( $env_local ) {
+				define_credentials( $env_local );
+				return true;
+			}
 
-	// Return false for anything else (default).
-	return false;
+			// Local environment authentication defaults to false.
+			return false;
+
+		case 'development':
+			// Development environments are true by default, so check if it was explicitly disabled.
+			if ( $env_dev === false ) {
+				return false;
+			}
+
+			define_credentials( $env_dev );
+			return true;
+
+		case 'staging':
+			// Staging environments are true by default, so check if it was explicitly disabled.
+			if ( $env_stage === false ) {
+				return false;
+			}
+
+			define_credentials( $env_stage );
+			return true;
+
+		case 'production':
+			// Production environments need to be explicitly enabled, otherwise they default to false.
+			if ( $env_prod ) {
+				define_credentials( $env_prod );
+				return true;
+			}
+
+			return false;
+
+		default:
+			// If we're in a development environment, default to enabling basic auth.
+			if ( in_array( get_environment_type(), [ 'development', 'staging' ] ) ) {
+				// Define the credentials from the config. If none were set, no creds will be defined.
+				define_credentials( $default );
+				return true;
+			}
+
+			return false;
+	}
 }
+
+/**
+ * Set the HM_BASIC_AUTH_USER and HM_BASIC_AUTH_PW constants based on the
+ * parameters passed in the composer.json file.
+ *
+ * @param array|true $environment An array of options or boolean true (false
+ *  would not be passed to this function). If an array was passed, use it to
+ *  determine the username and password constants.
+ */
+function define_credentials( $environment ) {
+	// Bail if username and password was not configured for the environment.
+	if ( ! is_array( $environment ) ) {
+		return;
+	}
+
+	// Bail if the config doesn't actually have the username/password values.
+	if ( ! isset( $environment['username'] ) || ! isset( $environment['password'] ) ) {
+		return;
+	}
+
+	define( 'HM_BASIC_AUTH_USER', $environment['username'] );
+	define( 'HM_BASIC_AUTH_PW', $environment['password'] );
+}
+
