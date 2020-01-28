@@ -81,6 +81,9 @@ function filter_dev_env() {
 function define_credentials( $environment ) {
 	// Get the default config values.
 	$default = get_config()['modules']['security']['php-basic-auth'];
+
+	// If both this specific environment and the default
+	if ( ! is_array( $environment ) && ! is_array( $default ) ) {
 		return;
 	}
 
