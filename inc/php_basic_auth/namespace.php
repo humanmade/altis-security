@@ -93,6 +93,8 @@ function define_credentials( $environment ) {
 		'password' => $environment['password'] ?? $default['password'] ?? false,
 	];
 
+	// Bail if we didn't actually set the username/password values.
+	if ( ! $credentials['username'] || ! $credentials['password'] ) {
 		return;
 	}
 
