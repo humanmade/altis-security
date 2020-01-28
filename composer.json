@@ -30,6 +30,11 @@
 		"humanmade/two-factor": "0.2"
 	},
 	"extra": {
-		"altis": {}
+		"altis": {},
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}": [
+				"humanmade/php-basic-auth"
+			]
+		}
 	}
 }
