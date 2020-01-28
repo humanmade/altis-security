@@ -41,8 +41,8 @@ The more advanced (and recommended) setup is a more complex `composer.json` file
 "altis": {
 	"modules": {
 		"php-basic-auth": {
-			"username": altisusername,
-			"password": altispassword
+			"username": "altisusername",
+			"password": "altispassword"
 		}
 	}
 }
@@ -57,8 +57,8 @@ By default, PHP Basic Auth will work on development and staging environments but
 	"modules": {
 		"security": {
 			"php-basic-auth": {
-				"username": devuser,
-				"password": devpass
+				"username": "devuser",
+				"password": "devpass"
 			}
 		}
 	}
@@ -67,8 +67,8 @@ By default, PHP Basic Auth will work on development and staging environments but
 			"modules": {
 				"security": {
 					"php-basic-auth": {
-						"username": altis,
-						"password": altis
+						"username": "altis",
+						"password": "altis"
 					}
 				}
 			}
@@ -77,8 +77,8 @@ By default, PHP Basic Auth will work on development and staging environments but
 			"modules": {
 				"security": {
 					"php-basic-auth": {
-						"username": produser,
-						"password": prodpass
+						"username": "produser",
+						"password": "prodpass"
 					}
 				}
 			}
