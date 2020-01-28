@@ -16,14 +16,11 @@ function on_plugins_loaded() {
 		Browser\bootstrap( $config['browser'] );
 	}
 
-	if ( ! is_site_public() ) {
-		// If PHP Basic Auth is enabled, require that instead of Require Login.
-		if ( $config['php-basic-auth'] ) {
-			require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
-			PHP_Basic_Auth\bootstrap();
-		} else {
-			require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
-		}
+	if ( $config['php-basic-auth'] ) {
+		require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		PHP_Basic_Auth\bootstrap();
+	} elseif ( ! is_site_public() ) {
+		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
 
 	if ( $config['audit-log'] ) {
