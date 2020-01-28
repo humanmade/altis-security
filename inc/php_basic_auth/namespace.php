@@ -87,8 +87,12 @@ function define_credentials( $environment ) {
 		return;
 	}
 
-	// Bail if the config doesn't actually have the username/password values.
-	if ( ! isset( $environment['username'] ) || ! isset( $environment['password'] ) ) {
+	// Define the username & password with either the values passed by the environment, the defaults, or false if neither exist.
+	$credentials = [
+		'username' => $environment['username'] ?? $default['username'] ?? false,
+		'password' => $environment['password'] ?? $default['password'] ?? false,
+	];
+
 		return;
 	}
 
