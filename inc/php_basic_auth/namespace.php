@@ -6,7 +6,7 @@ use function Altis\get_config;
 use function Altis\get_environment_type;
 
 function bootstrap() {
-	add_action( 'hmauth_action_before_define_credentials', __NAMESPACE__ . '\\check_environment_credentials' );
+	add_action( 'hmauth_action_before_dev_env_check', __NAMESPACE__ . '\\check_environment_credentials' );
 }
 
 /**
