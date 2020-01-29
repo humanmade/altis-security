@@ -15,10 +15,10 @@ function bootstrap() {
  */
 function check_environment_credentials() {
 	// Collect the environment overrides.
-	$env_local = get_config()['environments']['local']['security']['php-basic-auth'];
-	$env_dev   = get_config()['environments']['local']['security']['php-basic-auth'];
-	$env_stage = get_config()['environments']['local']['security']['php-basic-auth'];
-	$env_prod  = get_config()['environments']['local']['security']['php-basic-auth'];
+	$env_local = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
+	$env_dev   = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
+	$env_stage = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
+	$env_prod  = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
 
 	switch ( get_environment_type() ) {
 		case 'local':
