@@ -6,14 +6,14 @@ use function Altis\get_config;
 use function Altis\get_environment_type;
 
 function bootstrap() {
-	add_filter( 'hmauth_filter_on_dev_env', __NAMESPACE__ . '\\filter_dev_env' );
+	add_action( 'hmauth_action_before_define_credentials', __NAMESPACE__ . '\\check_environment_credentials' );
 }
 
 /**
  * Conditionally short-circuit the basic authentication settings based on the
  * composer.json configuration.
  */
-function filter_dev_env() {
+function check_environment_credentials() {
 	// Collect the environment overrides.
 	$env_local = get_config()['environments']['local']['security']['php-basic-auth'];
 	$env_dev   = get_config()['environments']['local']['security']['php-basic-auth'];
