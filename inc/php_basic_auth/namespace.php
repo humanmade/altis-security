@@ -12,10 +12,6 @@ function bootstrap() {
 /**
  * Set the HM_BASIC_AUTH_USER and HM_BASIC_AUTH_PW constants based on the
  * parameters passed in the composer.json file.
- *
- * @param array|true $environment An array of options or boolean true (false
- *  would not be passed to this function). If an array was passed, use it to
- *  determine the username and password constants.
  */
 function define_credentials() {
 	// Get the config values.
