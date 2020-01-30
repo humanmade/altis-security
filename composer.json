@@ -30,12 +30,6 @@
 		"humanmade/two-factor": "0.2"
 	},
 	"extra": {
-		"altis": {},
-		"installer-paths": {
-			"vendor/{$vendor}/{$name}": [
-				"type:wordpress-muplugin",
-				"humanmade/php-basic-auth"
-			]
-		}
+		"altis": {}
 	}
 }
