@@ -15,10 +15,14 @@ By default, PHP Basic Auth is disabled. To enable it, a value must be passed to 
 The basic setup involves a simpler configuration in your `composer.json` but an additional step in the setup. Your Composer file would look like this:
 
 ```json
-"altis": {
-	"modules": {
-		"security": {
-			"php-basic-auth": true
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"php-basic-auth": true
+				}
+			}
 		}
 	}
 }
@@ -38,13 +42,15 @@ if ( in_array( \Altis\get_environment_type(), [ 'staging', 'development' ] ) {
 The more advanced (and recommended) setup is a more complex `composer.json` file, but does not require defining the username and password constants in a separate file -- that's handled in the composer file itself. The same configuration in the above example can be handled like this in the Composer file:
 
 ```json
-"extra": {
-	"altis": {
-		"modules": {
-			"security": {
-				"php-basic-auth": {
-					"username": "altisusername",
-					"password": "altispassword"
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"php-basic-auth": {
+						"username": "altisusername",
+						"password": "altispassword"
+					}
 				}
 			}
 		}
@@ -57,33 +63,35 @@ The more advanced (and recommended) setup is a more complex `composer.json` file
 By default, PHP Basic Auth will work on development and staging environments but not local or production environments. These defaults can be overridden in the `composer.json` file as well, or environment-specific username/password combinations could be defined:
 
 ```json
-"extra": {
-	"altis": {
-		"modules": {
-			"security": {
-				"php-basic-auth": {
-					"username": "devuser",
-					"password": "devpass"
-				}
-			}
-		},
-		"environments": {
-			"local": {
-				"modules": {
-					"security": {
-						"php-basic-auth": {
-							"username": "altis",
-							"password": "altis"
-						}
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"php-basic-auth": {
+						"username": "devuser",
+						"password": "devpass"
 					}
 				}
 			},
-			"production": {
-				"modules": {
-					"security": {
-						"php-basic-auth": {
-							"username": "produser",
-							"password": "prodpass"
+			"environments": {
+				"local": {
+					"modules": {
+						"security": {
+							"php-basic-auth": {
+								"username": "altis",
+								"password": "altis"
+							}
+						}
+					}
+				},
+				"production": {
+					"modules": {
+						"security": {
+							"php-basic-auth": {
+								"username": "produser",
+								"password": "prodpass"
+							}
 						}
 					}
 				}
