@@ -31,6 +31,8 @@ The recommended setup is to define everything in your `composer.json` file, incl
 }
 ```
 
+**Note:** You _must_ specify the username and password in this configuration, even if you are reusing the same username and password in different environments.
+
 ### Manual
 
 Manual setup involves a simpler configuration in your `composer.json` but an additional step in your configuration. Your Composer file would look like this:
