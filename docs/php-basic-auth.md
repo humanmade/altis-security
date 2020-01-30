@@ -10,9 +10,30 @@ PHP Basic Auth allows an engineering team to restrict access to a site using bas
 
 By default, PHP Basic Auth is disabled. To enable it, a value must be passed to `security.php-basic-auth` -- either `true` or an array that includes a username and password.
 
-### Basic
+### Altis
 
-The basic setup involves a simpler configuration in your `composer.json` but an additional step in the setup. Your Composer file would look like this:
+The recommended setup is to define everything in your `composer.json` file, including the username and passwords. The same configuration in the below, manual setup example could be handled in the Composer file like this:
+
+```json
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"php-basic-auth": {
+						"username": "altisusername",
+						"password": "altispassword"
+					}
+				}
+			}
+		}
+	}
+}
+```
+
+### Manual
+
+Manual setup involves a simpler configuration in your `composer.json` but an additional step in your configuration. Your Composer file would look like this:
 
 ```json
 {
@@ -34,27 +55,6 @@ This _turns on_ the PHP Basic Auth component, but does not define the username a
 if ( in_array( \Altis\get_environment_type(), [ 'staging', 'development' ] ) {
 	define( 'HM_BASIC_AUTH_USER', 'altisusername' );
 	define( 'HM_BASIC_AUTH_PW', 'altispassword' );
-}
-```
-
-### Advanced
-
-The more advanced (and recommended) setup is a more complex `composer.json` file, but does not require defining the username and password constants in a separate file -- that's handled in the composer file itself. The same configuration in the above example can be handled like this in the Composer file:
-
-```json
-{
-	"extra": {
-		"altis": {
-			"modules": {
-				"security": {
-					"php-basic-auth": {
-						"username": "altisusername",
-						"password": "altispassword"
-					}
-				}
-			}
-		}
-	}
 }
 ```
 
