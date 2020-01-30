@@ -17,27 +17,16 @@ function bootstrap() {
  *  would not be passed to this function). If an array was passed, use it to
  *  determine the username and password constants.
  */
-function define_credentials( $environment ) {
-	// Get the default config values.
-	$default = get_config()['modules']['security']['php-basic-auth'];
-
-	// If both this specific environment and the default
-	if ( ! is_array( $environment ) && ! is_array( $default ) ) {
-		return;
-	}
-
-	// Define the username & password with either the values passed by the environment, the defaults, or false if neither exist.
-	$credentials = [
-		'username' => $environment['username'] ?? $default['username'] ?? false,
-		'password' => $environment['password'] ?? $default['password'] ?? false,
-	];
+function define_credentials() {
+	// Get the config values.
+	$config = get_config()['modules']['security']['php-basic-auth'];
 
 	// Bail if we didn't actually set the username/password values.
-	if ( ! $credentials['username'] || ! $credentials['password'] ) {
+	if ( ! isset( $config['username'] ) || ! isset( $config['password'] ) ) {
+		trigger_error( 'You need to specify both a username and a password to use basic authentication.', E_USER_WARNING );
 		return;
 	}
 
-	define( 'HM_BASIC_AUTH_USER', $credentials['username'] );
-	define( 'HM_BASIC_AUTH_PW', $credentials['password'] );
+	defined( 'HM_BASIC_AUTH_USER' ) or define( 'HM_BASIC_AUTH_USER', $config['username'] );
+	defined( 'HM_BASIC_AUTH_PW' ) or define( 'HM_BASIC_AUTH_PW', $config['password'] );
 }
-
