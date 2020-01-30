@@ -61,7 +61,7 @@ By default, PHP Basic Auth will work on development and staging environments but
 				"password": "devpass"
 			}
 		}
-	}
+	},
 	"environments": {
 		"local": {
 			"modules": {
