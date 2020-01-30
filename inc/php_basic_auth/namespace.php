@@ -10,67 +10,6 @@ function bootstrap() {
 }
 
 /**
- * Conditionally short-circuit the basic authentication settings based on the
- * composer.json configuration.
- */
-function check_environment_credentials() {
-	// Collect the environment overrides.
-	$env_local = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
-	$env_dev   = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
-	$env_stage = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
-	$env_prod  = get_config()['environments']['local']['modules']['security']['php-basic-auth'];
-
-	switch ( get_environment_type() ) {
-		case 'local':
-			// Local environments are false by default, so check if this has been overridden.
-			if ( $env_local ) {
-				define_credentials( $env_local );
-				return true;
-			}
-
-			// Local environment authentication defaults to false.
-			return false;
-
-		case 'development':
-			// Development environments are true by default, so check if it was explicitly disabled.
-			if ( $env_dev === false ) {
-				return false;
-			}
-
-			define_credentials( $env_dev );
-			return true;
-
-		case 'staging':
-			// Staging environments are true by default, so check if it was explicitly disabled.
-			if ( $env_stage === false ) {
-				return false;
-			}
-
-			define_credentials( $env_stage );
-			return true;
-
-		case 'production':
-			// Production environments need to be explicitly enabled, otherwise they default to false.
-			if ( $env_prod ) {
-				define_credentials( $env_prod );
-				return true;
-			}
-
-			return false;
-
-		default:
-			// If we're in a development environment, default to enabling basic auth.
-			if ( in_array( get_environment_type(), [ 'development', 'staging' ] ) ) {
-				// Use the default credentials from the config.
-				define_credentials( true );
-				return true;
-			}
-
-			return false;
-	}
-}
-
-/**
  * Set the HM_BASIC_AUTH_USER and HM_BASIC_AUTH_PW constants based on the
  * parameters passed in the composer.json file.
  *
