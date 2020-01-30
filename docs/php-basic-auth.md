@@ -24,7 +24,7 @@ The basic setup involves a simpler configuration in your `composer.json` but an 
 }
 ```
 
-This _turns on_ the PHP Basic Auth component, but does not define the username and password. Without the username and password, basic authentication will not be required. To specify the username and password in this configuration, you must add them as PHP constants to a `.config/constants.php` file. The following example is recommended:
+This _turns on_ the PHP Basic Auth component, but does not define the username and password. Without the username and password, basic authentication will not be required. To specify the username and password in this configuration, you must add them as PHP constants to a file in the `.config/` directory (e.g. `.config/load.php` or a file required by `.config/load.php`). The following example is recommended:
 
 ```php
 if ( in_array( \Altis\get_environment_type(), [ 'staging', 'development' ] ) {
