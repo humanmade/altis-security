@@ -8,7 +8,6 @@ use function Altis\get_config;
 
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
-	add_action( 'init', __NAMESPACE__ . '\\on_init', 1 );
 }
 
 function on_plugins_loaded() {
@@ -16,6 +15,11 @@ function on_plugins_loaded() {
 
 	if ( $config['browser'] ) {
 		Browser\bootstrap( $config['browser'] );
+	}
+
+	if ( $config['php-basic-auth'] ) {
+		require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		PHP_Basic_Auth\bootstrap();
 	}
 
 	if ( ! is_site_public() ) {
@@ -38,18 +42,6 @@ function on_plugins_loaded() {
 
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
-	}
-}
-
-/**
- * Run an early check for PHP Basic Authentication.
- */
-function on_init() {
-	$config = get_config()['modules']['security']['php-basic-auth'];
-
-	if ( $config ) {
-		require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
-		PHP_Basic_Auth\bootstrap();
 	}
 }
 
