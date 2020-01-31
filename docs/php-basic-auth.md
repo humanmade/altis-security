@@ -1,14 +1,14 @@
 # PHP Basic Auth
 
-In many instances, the Require Login component of Altis is sufficient to block access to websites. However, sometimes, it's desirable to be able to test elements -- particularly on development environments -- as a logged-out user. In these cases, the Require Login module does not solve the problem and another method of blocking access is required. That's where PHP Basic Auth comes in.
+In many instances, the Require Login component of Altis is sufficient to block access to websites. However, sometimes, it's desirable to be able to test elements (particularly on development environments) as a logged-out user. In these cases, the Require Login module does not solve the problem and another method of blocking access is required. That's where PHP Basic Auth comes in.
 
-PHP Basic Auth allows an engineering team to restrict access to a site using basic PHP authentication. On first load, the website will request a username and password -- if they are not passed, or the wrong username and password are provided, the site will not load.
+PHP Basic Auth allows an engineering team to restrict access to a site using basic PHP authentication. On first load, the website will request a username and password; if they are not passed, or the wrong username and password are provided, the site will not load.
 
 **Note:** The authentication username and password _must_ be defined or basic authentication will not be active.
 
 ## Configuration
 
-By default, PHP Basic Auth is disabled. To enable it, a value must be passed to `security.php-basic-auth` -- either `true` or an array that includes a username and password.
+By default, PHP Basic Auth is disabled. To enable it, a value must be passed to `security.php-basic-auth`, either `true` or an array that includes a username and password.
 
 The recommended setup is to define everything in your `composer.json` file, including the username and passwords. The same configuration in the below, manual setup example could be handled in the Composer file like this:
 
