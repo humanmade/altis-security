@@ -10,8 +10,6 @@ PHP Basic Auth allows an engineering team to restrict access to a site using bas
 
 By default, PHP Basic Auth is disabled. To enable it, a value must be passed to `security.php-basic-auth` -- either `true` or an array that includes a username and password.
 
-### Altis
-
 The recommended setup is to define everything in your `composer.json` file, including the username and passwords. The same configuration in the below, manual setup example could be handled in the Composer file like this:
 
 ```json
