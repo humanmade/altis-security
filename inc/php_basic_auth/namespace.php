@@ -16,6 +16,10 @@ function bootstrap() {
 function define_credentials() {
 	// Get the config values.
 	$config = get_config()['modules']['security']['php-basic-auth'];
+	
+	if ( ! is_array( $config ) ) {
+		return;
+	}
 
 	// Bail if we didn't actually set the username/password values.
 	if ( ! isset( $config['username'] ) || ! isset( $config['password'] ) ) {
