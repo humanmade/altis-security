@@ -22,6 +22,12 @@ function define_credentials() {
 		return;
 	}
 
+	// Check username and password are both set.
+	if ( ! isset( $config['username'], $config['password'] ) ) {
+		trigger_error( 'Both the username and password must be specified for PHP Basic Auth to function', E_USER_WARNING );
+		return;
+	}
+
 	defined( 'HM_BASIC_AUTH_USER' ) or define( 'HM_BASIC_AUTH_USER', $config['username'] );
 	defined( 'HM_BASIC_AUTH_PW' ) or define( 'HM_BASIC_AUTH_PW', $config['password'] );
 }
