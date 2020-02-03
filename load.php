@@ -8,6 +8,7 @@ add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled'                   => true,
 		'require-login'             => false,
+		'php-basic-auth'            => false,
 		'audit-log'                 => true,
 		'2-factor-authentication'   => true,
 		'minimum-password-strength' => 2,

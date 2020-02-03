@@ -2,6 +2,7 @@
 
 namespace Altis\Security;
 
+use Altis\Security\PHP_Basic_Auth;
 use const Altis\ROOT_DIR;
 use function Altis\get_config;
 
@@ -14,6 +15,11 @@ function on_plugins_loaded() {
 
 	if ( $config['browser'] ) {
 		Browser\bootstrap( $config['browser'] );
+	}
+
+	if ( $config['php-basic-auth'] ) {
+		require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		PHP_Basic_Auth\bootstrap();
 	}
 
 	if ( ! is_site_public() ) {
