@@ -15,7 +15,9 @@ function bootstrap() {
 	$config = get_config()['modules']['security']['limit-login-attempts'];
 
 	// Load plugin.
-	require_once ROOT_DIR . '/vendor/humanmade/hm-limit-login-attempts/hm-limit-login-attempts.php';
+	if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
+		add_action( 'plugins_loaded', __NAMESPACE__ . '\\load_plugin' );
+	}
 
 	// If config is just `true`, enable plugin and show admin page.
 	if ( is_array( $config ) ) {
@@ -43,6 +45,13 @@ function bootstrap() {
 			} );
 		}
 	}
+}
+
+/**
+ * Includes the plugin file.
+ */
+function load_plugin() {
+	require_once ROOT_DIR . '/vendor/humanmade/hm-limit-login-attempts/hm-limit-login-attempts.php';
 }
 
 /**
