@@ -91,7 +91,7 @@ function remove_2fa_dummy_provider( array $providers ) : array {
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
 	$config = get_config()['modules']['security']['2-factor-authentication'];
-	if ( ! empty( $config['required'] ) && is_bool( $config['required'] ) ) {
+	if ( ! empty( $config['required'] ) || is_bool( $config['required'] ) ) {
 		return $config['required'];
 	}
 
