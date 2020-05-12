@@ -23,7 +23,7 @@
 	},
 	"require": {
 		"php": ">=7.1",
-		"bjeavons/zxcvbn-php": "^0.4.0",
+		"bjeavons/zxcvbn-php": "^0.4.0 || ^1.0.0",
 		"altis/browser-security": "^1.0.0",
 		"humanmade/hm-limit-login-attempts": "1.1.0",
 		"humanmade/php-basic-auth": "^1.1.0",
