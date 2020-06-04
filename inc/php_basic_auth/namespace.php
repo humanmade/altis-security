@@ -3,7 +3,6 @@
 namespace Altis\Security\PHP_Basic_Auth;
 
 use function Altis\get_config;
-use function Altis\get_environment_type;
 
 function bootstrap() {
 	add_action( 'hmauth_action_before_dev_env_check', __NAMESPACE__ . '\\define_credentials' );
