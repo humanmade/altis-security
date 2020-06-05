@@ -1,8 +1,13 @@
 <?php
+/**
+ * Altis Security Module.
+ *
+ * @package altis-security
+ */
 
-namespace Altis\Security; // @codingStandardsIgnoreLine
+namespace Altis\Security; // phpcs:ignore
 
-use function Altis\register_module;
+use Altis;
 
 add_action( 'altis.modules.init', function () {
 	$default_settings = [
@@ -39,5 +44,5 @@ add_action( 'altis.modules.init', function () {
 			'xss-protection-header' => true,
 		],
 	];
-	register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
+	Altis\register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
 } );

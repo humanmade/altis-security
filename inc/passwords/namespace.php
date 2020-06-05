@@ -1,8 +1,13 @@
 <?php
+/**
+ * Altis Security Password Enhancements.
+ *
+ * @package altis-security
+ */
 
 namespace Altis\Security\Passwords;
 
-use function Altis\get_config;
+use Altis;
 use WP_Error;
 use ZxcvbnPhp\Zxcvbn;
 
@@ -29,7 +34,7 @@ function bootstrap() {
  * @return int Minimum required strength
  */
 function get_minimum_strength() : int {
-	$config = get_config()['modules']['security'];
+	$config = Altis\get_config()['modules']['security'];
 
 	/**
 	 * Filter the minimum required password strength.
@@ -50,9 +55,9 @@ function get_minimum_strength() : int {
 /**
  * Enforce minimum password strength during password check.
  *
- * @param string $user_login User login slug
- * @param string $pass1 First password input field
- * @param string $pass2 Second password input field
+ * @param string $user_login User login slug.
+ * @param string $pass1 First password input field.
+ * @param string $pass2 Second password input field.
  */
 function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	if ( empty( $pass1 ) || $pass1 !== $pass2 ) {
@@ -61,7 +66,7 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	}
 
 	// Add extra data to password strength checks.
-	// (Matches list in password-strength-meter.js)
+	// (Matches list in password-strength-meter.js).
 	$user = get_user_by( 'login', $user_login );
 	if ( empty( $user ) ) {
 		// No user found.
