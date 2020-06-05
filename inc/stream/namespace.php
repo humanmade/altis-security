@@ -2,7 +2,7 @@
 /**
  * Altis Security Audit Log.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security\Stream;

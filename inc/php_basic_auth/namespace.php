@@ -2,7 +2,7 @@
 /**
  * Altis Security Basic Auth.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security\PHP_Basic_Auth;

@@ -2,7 +2,7 @@
 /**
  * Altis Security Password Enhancements.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security\Passwords;

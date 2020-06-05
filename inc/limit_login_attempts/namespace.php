@@ -2,7 +2,7 @@
 /**
  * Altis Security Limit Logins Integration.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security\Limit_Login_Attempts;

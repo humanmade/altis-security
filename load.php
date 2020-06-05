@@ -2,7 +2,7 @@
 /**
  * Altis Security Module.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security; // phpcs:ignore

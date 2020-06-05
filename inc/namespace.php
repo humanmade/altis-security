@@ -2,7 +2,7 @@
 /**
  * Altis Security.
  *
- * @package altis-security
+ * @package altis/security
  */
 
 namespace Altis\Security;
