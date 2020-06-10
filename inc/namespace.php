@@ -9,7 +9,6 @@ namespace Altis\Security;
 
 use Altis;
 use Altis\Security\PHP_Basic_Auth;
-use function Altis\get_config;
 
 /**
  * Set up action hooks.
@@ -105,7 +104,7 @@ function remove_2fa_dummy_provider( array $providers ) : array {
  * @return bool
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
-	$config = get_config()['modules']['security']['2-factor-authentication'];
+	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) || is_bool( $config['required'] ) ) {
 		return $config['required'];
 	}
@@ -121,7 +120,7 @@ function override_two_factor_universally_forced( bool $is_forced ) : bool {
  * @return array|null
  */
 function override_two_factor_forced_user_roles( $roles ) {
-	$config = get_config()['modules']['security']['2-factor-authentication'];
+	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
 		return $config['required'];
 	}
