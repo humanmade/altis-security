@@ -1,29 +1,43 @@
 <?php
+/**
+ * Altis Security.
+ *
+ * @package altis/security
+ */
 
 namespace Altis\Security;
 
+use Altis;
 use Altis\Security\PHP_Basic_Auth;
-use const Altis\ROOT_DIR;
-use function Altis\get_config;
 
+/**
+ * Set up action hooks.
+ *
+ * @return void
+ */
 function bootstrap() {
 	add_action( 'plugins_loaded', __NAMESPACE__ . '\\on_plugins_loaded', 1 );
 }
 
+/**
+ * Load plugins.
+ *
+ * @return void
+ */
 function on_plugins_loaded() {
-	$config = get_config()['modules']['security'];
+	$config = Altis\get_config()['modules']['security'];
 
 	if ( $config['browser'] ) {
 		Browser\bootstrap( $config['browser'] );
 	}
 
 	if ( $config['php-basic-auth'] ) {
-		require_once ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
+		require_once Altis\ROOT_DIR . '/vendor/humanmade/php-basic-auth/plugin.php';
 		PHP_Basic_Auth\bootstrap();
 	}
 
 	if ( ! is_site_public() ) {
-		require_once ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
+		require_once Altis\ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
 	}
 
 	if ( $config['audit-log'] ) {
@@ -36,7 +50,7 @@ function on_plugins_loaded() {
 		add_filter( 'two_factor_universally_forced', __NAMESPACE__ . '\\override_two_factor_universally_forced' );
 		add_filter( 'two_factor_forced_user_roles', __NAMESPACE__ . '\\override_two_factor_forced_user_roles' );
 		if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
-			require_once ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
+			require_once Altis\ROOT_DIR . '/vendor/humanmade/two-factor/two-factor.php';
 		}
 	}
 
@@ -61,7 +75,7 @@ function is_site_public() : bool {
 	}
 
 	// Allow overrides from composer.json.
-	$config = get_config()['modules']['security'];
+	$config = Altis\get_config()['modules']['security'];
 	if ( $config['require-login'] ) {
 		return false;
 	}
@@ -73,7 +87,7 @@ function is_site_public() : bool {
 /**
  * Remove the Dummy provider from the 2FA options.
  *
- * @param array $providers
+ * @param array $providers 2FA providers list.
  * @return array
  */
 function remove_2fa_dummy_provider( array $providers ) : array {
@@ -86,11 +100,11 @@ function remove_2fa_dummy_provider( array $providers ) : array {
 /**
  * Override the two factor forced setting with values from the Altis configuration.
  *
- * @param bool $is_forced
+ * @param bool $is_forced If true forces 2FA to be required.
  * @return bool
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
-	$config = get_config()['modules']['security']['2-factor-authentication'];
+	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) || is_bool( $config['required'] ) ) {
 		return $config['required'];
 	}
@@ -102,11 +116,11 @@ function override_two_factor_universally_forced( bool $is_forced ) : bool {
  * Override the two factor forced setting for enabled roles with values
  * from the Altis configuration.
  *
- * @param array|null $roles
+ * @param array|null $roles Roles required to use 2FA.
  * @return array|null
  */
 function override_two_factor_forced_user_roles( $roles ) {
-	$config = get_config()['modules']['security']['2-factor-authentication'];
+	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
 		return $config['required'];
 	}

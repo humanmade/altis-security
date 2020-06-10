@@ -1,10 +1,19 @@
 <?php
+/**
+ * Altis Security Basic Auth.
+ *
+ * @package altis/security
+ */
 
 namespace Altis\Security\PHP_Basic_Auth;
 
-use function Altis\get_config;
-use function Altis\get_environment_type;
+use Altis;
 
+/**
+ * Set up action hooks.
+ *
+ * @return void
+ */
 function bootstrap() {
 	add_action( 'hmauth_action_before_dev_env_check', __NAMESPACE__ . '\\define_credentials' );
 }
@@ -15,7 +24,7 @@ function bootstrap() {
  */
 function define_credentials() {
 	// Get the config values.
-	$config = get_config()['modules']['security']['php-basic-auth'];
+	$config = Altis\get_config()['modules']['security']['php-basic-auth'];
 
 	// Bail if we didn't actually set the username/password values.
 	if ( ! is_array( $config ) ) {

@@ -1,10 +1,20 @@
 <?php
+/**
+ * Altis Security Audit Log.
+ *
+ * @package altis/security
+ */
 
 namespace Altis\Security\Stream;
 
-use const Altis\ROOT_DIR;
+use Altis;
 use WP_Admin_Bar;
 
+/**
+ * Bootstrap Stream plugin.
+ *
+ * @return void
+ */
 function bootstrap() {
 	if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 		return;
@@ -23,10 +33,16 @@ function bootstrap() {
 	add_action( 'network_admin_menu', __NAMESPACE__ . '\\remove_stream_admin_pages', 11 );
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
 
-	require_once ROOT_DIR . '/vendor/humanmade/stream/stream.php';
+	require_once Altis\ROOT_DIR . '/vendor/humanmade/stream/stream.php';
 }
 
-function default_stream_network_options( $options ) : array {
+/**
+ * Set default Stream plugin config options.
+ *
+ * @param array $options Stream configuration options.
+ * @return array
+ */
+function default_stream_network_options( array $options ) : array {
 	$options['general_site_access'] = 0;
 	$options['general_keep_records_indefinitely'] = true;
 	return $options;
@@ -46,7 +62,7 @@ function remove_stream_admin_pages() {
 /**
  * Override the Stream admin bar menu.
  *
- * @param WP_Admin_Bar $wp_admin_bar
+ * @param WP_Admin_Bar $wp_admin_bar The admin bar manager class.
  */
 function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 	// Menu item is only registered inside the admin, so don't try and replace

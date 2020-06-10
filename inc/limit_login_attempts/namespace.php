@@ -1,9 +1,13 @@
 <?php
+/**
+ * Altis Security Limit Logins Integration.
+ *
+ * @package altis/security
+ */
 
 namespace Altis\Security\Limit_Login_Attempts;
 
-use const Altis\ROOT_DIR;
-use function Altis\get_config;
+use Altis;
 
 /**
  * Bootstrap.
@@ -12,7 +16,7 @@ function bootstrap() {
 	// Set default constants for Altis.
 	define( 'HM_LIMIT_LOGIN_DIRECT_ADDR', 'HTTP_X_FORWARDED_FOR' );
 
-	$config = get_config()['modules']['security']['limit-login-attempts'];
+	$config = Altis\get_config()['modules']['security']['limit-login-attempts'];
 
 	// Load plugin.
 	if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
@@ -51,7 +55,7 @@ function bootstrap() {
  * Includes the plugin file.
  */
 function load_plugin() {
-	require_once ROOT_DIR . '/vendor/humanmade/hm-limit-login-attempts/hm-limit-login-attempts.php';
+	require_once Altis\ROOT_DIR . '/vendor/humanmade/hm-limit-login-attempts/hm-limit-login-attempts.php';
 }
 
 /**
@@ -63,7 +67,7 @@ function load_plugin() {
  * @return bool
  */
 function check_whitelist( $allow, $ip ) {
-	$config = get_config()['modules']['security']['limit-login-attempts'];
+	$config = Altis\get_config()['modules']['security']['limit-login-attempts'];
 
 	if ( in_array( $ip, $config['whitelisted_ips'], true ) ) {
 		return true;
