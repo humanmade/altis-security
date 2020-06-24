@@ -2,6 +2,8 @@
 
 By default, all websites are publicly accessible. In some situations, you may want to require users to be logged in to access the website. This is especially useful when in pre-launch mode.
 
+Environments running in Cloud that are not of type `production` have the `require-login` feature enabled by default.
+
 ## Controlling Site Access
 
 Requiring login on individual sites is as easy as unchecking the site's public setting in the Edit Site screen. To access this setting, go to [My Sites > Network Admin > Sites](internal://network-admin/sites.php) and then click the URL for the site you want to edit. From there you check the box for whether the site is public or not under the "Attributes" section.
