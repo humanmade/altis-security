@@ -2,12 +2,13 @@
 
 namespace Altis\Security; // @codingStandardsIgnoreLine
 
+use Altis;
 use function Altis\register_module;
 
 add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled'                   => true,
-		'require-login'             => false,
+		'require-login'             => ! in_array( Altis\get_environment_type(), [ 'production', 'local' ], true ),
 		'audit-log'                 => true,
 		'2-factor-authentication'   => true,
 		'minimum-password-strength' => 2,
