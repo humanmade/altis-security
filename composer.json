@@ -28,7 +28,7 @@
 		"humanmade/hm-limit-login-attempts": "1.1.0",
 		"humanmade/php-basic-auth": "^1.1.0",
 		"humanmade/require-login": "~1.0.2",
-		"humanmade/stream": "3.3.0",
+		"humanmade/stream": "3.4.2",
 		"humanmade/two-factor": "0.2"
 	},
 	"extra": {
