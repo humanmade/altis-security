@@ -9,6 +9,7 @@ namespace Altis\Security\Stream;
 
 use Altis;
 use WP_Admin_Bar;
+use function HM\Platform\XRay\get_root_trace_id;
 
 /**
  * Bootstrap Stream plugin.
@@ -32,7 +33,7 @@ function bootstrap() {
 	add_filter( 'default_site_option_wp_stream_network', __NAMESPACE__ . '\\default_stream_network_options' );
 	add_action( 'network_admin_menu', __NAMESPACE__ . '\\remove_stream_admin_pages', 11 );
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
-
+	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
 	require_once Altis\ROOT_DIR . '/vendor/humanmade/stream/stream.php';
 }
 
@@ -87,4 +88,16 @@ function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 			'href'   => esc_url( $href ),
 		]
 	);
+}
+
+/**
+ * Add the Xray ID to the log item meta data.
+ *
+ * @param $record
+ *
+ * @return mixed
+ */
+function filter_wp_stream_record_array( $record ) {
+	$record['meta']['xray'] = get_root_trace_id();
+	return $record;
 }
