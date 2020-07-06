@@ -8,8 +8,8 @@
 namespace Altis\Security\Stream;
 
 use Altis;
-use WP_Admin_Bar;
 use function HM\Platform\XRay\get_root_trace_id;
+use WP_Admin_Bar;
 
 /**
  * Bootstrap Stream plugin.
