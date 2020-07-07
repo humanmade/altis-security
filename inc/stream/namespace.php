@@ -8,7 +8,7 @@
 namespace Altis\Security\Stream;
 
 use Altis;
-use function HM\Platform\XRay\get_root_trace_id;
+use HM\Platform\XRay;
 use WP_Admin_Bar;
 
 /**
@@ -93,11 +93,11 @@ function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 /**
  * Add the Xray ID to the log item meta data.
  *
- * @param $record
+ * @param array $record The stream log record to filter.
  *
- * @return mixed
+ * @return array
  */
-function filter_wp_stream_record_array( $record ) {
-	$record['meta']['xray'] = get_root_trace_id();
+function filter_wp_stream_record_array( $record ) : array {
+	$record['meta']['xray'] = XRay\get_root_trace_id();
 	return $record;
 }
