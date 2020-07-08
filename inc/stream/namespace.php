@@ -98,6 +98,10 @@ function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
  * @return array
  */
 function filter_wp_stream_record_array( $record ) : array {
+	if ( ! function_exists( 'XRay\\get_root_trace_id' ) ) {
+		return $record;
+	}
+
 	$record['meta']['xray'] = XRay\get_root_trace_id();
 	return $record;
 }
