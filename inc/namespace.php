@@ -51,6 +51,10 @@ function is_site_public() : bool {
 		return true;
 	}
 
+	if ( defined( 'WP_INITIAL_INSTALL' ) && WP_INITIAL_INSTALL ) {
+		return true;
+	}
+
 	// Allow overrides from composer.json.
 	$config = get_config()['modules']['security'];
 	if ( $config['require-login'] ) {
