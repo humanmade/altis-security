@@ -54,6 +54,8 @@ function default_stream_network_options( array $options ) : array {
  */
 function remove_stream_admin_pages() {
 	/**
+	 * Stream plugin instance.
+	 *
 	 * @var \Stream\Plugin
 	 */
 	global $wp_stream;
