@@ -32,6 +32,15 @@
 		"humanmade/two-factor": "0.2"
 	},
 	"extra": {
-		"altis": {}
+		"altis": {
+			"install-overrides": [
+				"altis/browser-security",
+				"humanmade/hm-limit-login-attempts",
+				"humanmade/php-basic-auth",
+				"humanmade/require-login",
+				"humanmade/stream",
+				"humanmade/two-factor"
+			]
+		}
 	}
 }
