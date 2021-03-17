@@ -12,7 +12,6 @@
 	"autoload": {
 		"files": [
 			"inc/namespace.php",
-			"inc/limit_login_attempts/namespace.php",
 			"inc/passwords/namespace.php",
 			"inc/php_basic_auth/namespace.php"
 		],
@@ -25,7 +24,6 @@
 		"php": ">=7.1",
 		"bjeavons/zxcvbn-php": "^1.0.0",
 		"altis/browser-security": "^1.0.0",
-		"humanmade/hm-limit-login-attempts": "1.1.0",
 		"humanmade/php-basic-auth": "^1.1.0",
 		"humanmade/require-login": "~1.0.2",
 		"humanmade/stream": "3.4.2",
@@ -35,7 +33,6 @@
 		"altis": {
 			"install-overrides": [
 				"altis/browser-security",
-				"humanmade/hm-limit-login-attempts",
 				"humanmade/php-basic-auth",
 				"humanmade/require-login",
 				"humanmade/stream",
