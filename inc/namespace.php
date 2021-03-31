@@ -57,10 +57,6 @@ function on_plugins_loaded() {
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
 	}
-
-	if ( ! empty( $config['limit-login-attempts'] ) ) {
-		Limit_Login_Attempts\bootstrap();
-	}
 }
 
 /**
