@@ -26,8 +26,8 @@
 		"altis/browser-security": "^1.0.0",
 		"humanmade/php-basic-auth": "^1.1.0",
 		"humanmade/require-login": "~1.0.2",
-		"humanmade/stream": "3.4.2",
-		"humanmade/two-factor": "0.2"
+		"humanmade/two-factor": "0.2",
+		"xwp/stream": "^3.6.2"
 	},
 	"extra": {
 		"altis": {
@@ -35,8 +35,8 @@
 				"altis/browser-security",
 				"humanmade/php-basic-auth",
 				"humanmade/require-login",
-				"humanmade/stream",
-				"humanmade/two-factor"
+				"humanmade/two-factor",
+				"xwp/stream"
 			]
 		}
 	}

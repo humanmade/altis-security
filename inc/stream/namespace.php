@@ -34,7 +34,7 @@ function bootstrap() {
 	add_action( 'network_admin_menu', __NAMESPACE__ . '\\remove_stream_admin_pages', 11 );
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
 	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
-	require_once Altis\ROOT_DIR . '/vendor/humanmade/stream/stream.php';
+	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/stream.php';
 }
 
 /**
