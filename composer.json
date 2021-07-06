@@ -26,7 +26,7 @@
 		"bjeavons/zxcvbn-php": "^1.1.0",
 		"altis/browser-security": "^1.1.1",
 		"humanmade/hm-limit-login-attempts": "1.1.0",
-		"humanmade/php-basic-auth": "^1.1.0",
+		"humanmade/php-basic-auth": "^1.1.6",
 		"humanmade/require-login": "~1.0.4",
 		"humanmade/stream": "3.4.2",
 		"humanmade/two-factor": "0.2"
