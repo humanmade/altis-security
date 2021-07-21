@@ -10,6 +10,7 @@ namespace Altis\Security\Stream;
 use Altis;
 use HM\Platform\XRay;
 use WP_Admin_Bar;
+use WP_CLI;
 
 /**
  * Bootstrap Stream plugin.
@@ -17,7 +18,13 @@ use WP_Admin_Bar;
  * @return void
  */
 function bootstrap() {
-	if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
+	// Handle activation.
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		WP_CLI::add_hook( 'after_invoke:core multisite-install', __NAMESPACE__ . '\\setup_stream_db' );
+		add_action( 'altis.migrate', __NAMESPACE__ . '\\setup_stream_db' );
+	}
+
+	if ( defined( 'WP_INITIAL_INSTALL' ) && WP_INITIAL_INSTALL ) {
 		return;
 	}
 
@@ -35,6 +42,20 @@ function bootstrap() {
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
 	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
 	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/stream.php';
+}
+
+/**
+ * Set up stream database on migrate or install.
+ *
+ * @return void
+ */
+function setup_stream_db() {
+	if ( empty( $GLOBALS['wp_stream'] ) ) {
+		return;
+	}
+
+	// Ensure db is set up for stream.
+	$GLOBALS['wp_stream']->install->check();
 }
 
 /**
