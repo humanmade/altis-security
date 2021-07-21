@@ -27,7 +27,7 @@
 		"humanmade/php-basic-auth": "^1.1.6",
 		"humanmade/require-login": "~1.0.4",
 		"humanmade/stream": "3.4.2",
-		"humanmade/two-factor": "0.2"
+		"humanmade/two-factor": "0.2.1"
 	},
 	"extra": {
 		"altis": {
