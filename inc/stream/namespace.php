@@ -50,7 +50,7 @@ function bootstrap() {
  * @return void
  */
 function setup_stream_db() {
-	if ( empty( $GLOBALS['wp_stream'] ) ) {
+	if ( empty( $GLOBALS['wp_stream'] ) || empty( $GLOBALS['wp_stream']->install ) ) {
 		return;
 	}
 
