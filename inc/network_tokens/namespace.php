@@ -67,7 +67,7 @@ function verify_network_token( string $token, string $action ) : bool {
 	list( $token, $user_id ) = str_split( $token, 10 );
 
 	// Verify the token is in correct format.
-	if ( $token !== generate_network_token( $action, $user_id )  ) {
+	if ( $token !== generate_network_token( $action, $user_id ) ) {
 		return false;
 	}
 
