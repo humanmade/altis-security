@@ -57,6 +57,9 @@ function on_plugins_loaded() {
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
 	}
+
+	require_once __DIR__ . '/network_tokens/namespace.php';
+	Network_Tokens\bootstrap();
 }
 
 /**
