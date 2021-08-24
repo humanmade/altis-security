@@ -15,6 +15,7 @@ add_action( 'altis.modules.init', function () {
 		'require-login'             => ! in_array( Altis\get_environment_type(), [ 'production', 'local' ], true ),
 		'php-basic-auth'            => false,
 		'audit-log'                 => true,
+		'disable-accounts'          => false,
 		'2-factor-authentication'   => true,
 		'minimum-password-strength' => 2,
 		'browser' => [
