@@ -1,8 +1,6 @@
 # Disable Accounts
 
-Disable and re-enable accounts in WordPress multisite at will.
-
-Allows disabling accounts without reassigning content or changing any other user details, preserving any content created by the users.
+Altis provides the ability to disable accounts without having to actually delete user accounts. This allows for disabling accounts without reassigning content or changing any other user details, preserving any content created by the users.
 
 ## Usage
 
