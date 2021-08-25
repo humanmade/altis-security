@@ -17,7 +17,7 @@ All other details of the accounts are preserved, and accounts can be reactivated
 
 ## Overrides
 
-You can also set the `security.disable-accounts` setting to `false` in `composer.json` to disable this module:
+You can also set the `security.disable-accounts` setting to `false` in `composer.json` to disable this feature:
 
 ```json
 "altis": {
