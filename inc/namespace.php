@@ -57,7 +57,7 @@ function on_plugins_loaded() {
 	if ( ! empty( $config['minimum-password-strength'] ) && $config['minimum-password-strength'] > 0 ) {
 		Passwords\bootstrap();
 	}
-	
+
 	if ( $config['disable-accounts'] ) {
 		require_once Altis\ROOT_DIR . '/vendor/humanmade/disable-accounts/plugin.php';
 	}
