@@ -33,5 +33,8 @@ add_action( 'altis.modules.init', function () {
 			'xss-protection-header' => true,
 		],
 	];
-	Altis\register_module( 'security', __DIR__, 'Security', $default_settings, __NAMESPACE__ . '\\bootstrap' );
+	$options = [
+		'defaults' => $default_settings,
+	];
+	Altis\register_module( 'security', __DIR__, 'Security', $options, __NAMESPACE__ . '\\bootstrap' );
 } );
