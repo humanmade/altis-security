@@ -141,7 +141,7 @@ function show_weak_password_prompt(){?>
 
 	<div class="pw-weak">
 		<p>
-			<strong><?php esc_html_e( 'ERROR', 'altis' );?></strong><?php esc_html_e( ': Please use a stronger ', 'altis' );?><a href="#password"><?php esc_html_e( 'password', 'altis' );?></a>.
+			<strong><?php esc_html_e( 'ERROR', 'altis' ); ?></strong><?php esc_html_e( ': Please use a stronger ', 'altis' ); ?><a href="#password"><?php esc_html_e( 'password', 'altis' ); ?></a>.
 		</p>
 	</div>
 
@@ -155,7 +155,6 @@ function show_weak_password_prompt(){?>
 			margin: 0.5em 0;
 			padding: 1px 12px;
 		}
-		
 	</style>
 	<?php
 }
