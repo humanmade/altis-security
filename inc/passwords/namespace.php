@@ -18,6 +18,8 @@ function bootstrap() {
 	add_action( 'check_passwords', __NAMESPACE__ . '\\enforce_password_strength', 10, 3 );
 	add_action( 'admin_print_styles-user-edit.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
 	add_action( 'admin_print_styles-profile.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
+	add_action( 'edit_user_profile', __NAMESPACE__ . '\\show_weak_password_prompt', 100 );
+	add_action( 'show_user_profile', __NAMESPACE__ . '\\show_weak_password_prompt', 100 );
 }
 
 /**
@@ -129,5 +131,31 @@ function hide_weak_password_prompt() {
 		return;
 	}
 
-	echo '<style>.pw-weak { display: none !important; }</style>';
+	echo '<style>tr.pw-weak { display: none !important; }</style>';
+}
+
+/**
+ * Show an error message to the user before the submit button.
+ */
+function show_weak_password_prompt(){?>
+
+	<div class="pw-weak">
+		<p>
+			<strong><?php esc_html_e( 'ERROR', 'altis' );?></strong><?php esc_html_e( ': Please use a stronger ', 'altis' );?><a href="#password"><?php esc_html_e( 'password', 'altis' );?></a>.
+		</p>
+	</div>
+
+	<style>
+		.pw-weak{
+			background: #fff;
+			border: 1px solid #c3c4c7;
+			border-left-width: 4px;
+			border-left-color: #d63638;
+			box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+			margin: 0.5em 0;
+			padding: 1px 12px;
+		}
+		
+	</style>
+	<?php
 }
