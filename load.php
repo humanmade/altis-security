@@ -18,6 +18,7 @@ add_action( 'altis.modules.init', function () {
 		'disable-accounts'          => true,
 		'2-factor-authentication'   => [
 			'required' => [
+				'super-admin',
 				'administrator',
 			],
 		],
