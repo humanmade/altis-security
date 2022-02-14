@@ -45,7 +45,7 @@ function on_plugins_loaded() {
 		Stream\bootstrap();
 	}
 
-	if ( ! empty( $config['2-factor-authentication'] ) ) {
+	if ( ! empty( $config['2-factor-authentication'] ) && Altis\get_environment_type() !== 'local' ) {
 		add_filter( 'two_factor_providers', __NAMESPACE__ . '\\remove_2fa_dummy_provider' );
 		add_filter( 'two_factor_universally_forced', __NAMESPACE__ . '\\override_two_factor_universally_forced' );
 		add_filter( 'two_factor_forced_user_roles', __NAMESPACE__ . '\\override_two_factor_forced_user_roles' );
