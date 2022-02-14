@@ -146,5 +146,9 @@ function override_two_factor_forced_user_roles( $roles ) {
  * @return bool
  */
 function maybe_skip_two_factor_forcing_for_local_env() : bool {
-	return apply_filters( 'altis.security.2-factor-authentication.skip-local', Altis\get_environment_type() === 'local' );
+	if ( Altis\get_environment_type() === 'local' ) {
+		return apply_filters( 'altis.security.2-factor-authentication.skip-local', true );
+	}
+
+	return false;
 }
