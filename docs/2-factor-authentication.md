@@ -8,7 +8,11 @@ Second factor authentication options are Email, Time-based one-time passwords an
 
 Two Factor methods can be configured by each user in their Edit Profile page in the CMS.
 
-Worth noting that Two Factor Authentication is disabled on local environments for convenience.
+Worth noting that Two Factor Authentication is disabled on local environments for convenience, in order to enable it, use the filter `altis.security.2-factor-authentication.skip-local` as follows:
+
+```
+add_filter( 'altis.security.2-factor-authentication.skip-local', '__return_false' );
+```
 
 ## Requiring Two Factor Authentication
 
