@@ -18,6 +18,7 @@ function bootstrap() {
 	add_action( 'check_passwords', __NAMESPACE__ . '\\enforce_password_strength', 10, 3 );
 	add_action( 'admin_print_styles-user-edit.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
 	add_action( 'admin_print_styles-profile.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
+	add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\hide_weak_password_prompt' );
 	add_action( 'edit_user_profile', __NAMESPACE__ . '\\show_weak_password_prompt', 100 );
 	add_action( 'show_user_profile', __NAMESPACE__ . '\\show_weak_password_prompt', 100 );
 }
@@ -131,7 +132,7 @@ function hide_weak_password_prompt() {
 		return;
 	}
 
-	echo '<style>tr.pw-weak { display: none !important; }</style>';
+	echo '<style>tr.pw-weak, div.pw-weak { display: none !important; }</style>';
 }
 
 /**
