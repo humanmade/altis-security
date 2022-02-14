@@ -16,7 +16,11 @@ add_action( 'altis.modules.init', function () {
 		'php-basic-auth'            => false,
 		'audit-log'                 => true,
 		'disable-accounts'          => true,
-		'2-factor-authentication'   => true,
+		'2-factor-authentication'   => [
+			'required' => [
+				'administrator',
+			],
+		],
 		'minimum-password-strength' => 2,
 		'browser' => [
 			'automatic-integrity' => true,
