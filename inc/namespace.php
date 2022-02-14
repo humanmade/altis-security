@@ -45,7 +45,7 @@ function on_plugins_loaded() {
 		Stream\bootstrap();
 	}
 
-	if ( ! empty( $config['2-factor-authentication'] ) && Altis\get_environment_type() !== 'local' ) {
+	if ( ! empty( $config['2-factor-authentication'] ) ) {
 		add_filter( 'two_factor_providers', __NAMESPACE__ . '\\remove_2fa_dummy_provider' );
 		add_filter( 'two_factor_universally_forced', __NAMESPACE__ . '\\override_two_factor_universally_forced' );
 		add_filter( 'two_factor_forced_user_roles', __NAMESPACE__ . '\\override_two_factor_forced_user_roles' );
@@ -108,6 +108,10 @@ function remove_2fa_dummy_provider( array $providers ) : array {
  * @return bool
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
+	if ( maybe_skip_two_factor_forcing_for_local_env() ) {
+		return false;
+	}
+
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( is_array( $config ) && ( ! empty( $config['required'] ) || is_bool( $config['required'] ) ) ) {
 		return $config['required'];
@@ -124,10 +128,23 @@ function override_two_factor_universally_forced( bool $is_forced ) : bool {
  * @return array|null
  */
 function override_two_factor_forced_user_roles( $roles ) {
+	if ( maybe_skip_two_factor_forcing_for_local_env() ) {
+		return [];
+	}
+
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
 		return $config['required'];
 	}
 
 	return $roles;
+}
+
+/**
+ * Override the two factor forcing filters for local environments.
+ *
+ * @return bool
+ */
+function maybe_skip_two_factor_forcing_for_local_env() : bool {
+	return apply_filters( 'altis.security.2-factor-authentication.skip-local', Altis\get_environment_type() === 'local' );
 }
