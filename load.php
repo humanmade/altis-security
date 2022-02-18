@@ -16,7 +16,7 @@ add_action( 'altis.modules.init', function () {
 		'php-basic-auth'            => false,
 		'audit-log'                 => true,
 		'disable-accounts'          => true,
-		'2-factor-authentication'   => [
+		'2-factor-authentication'   => Altis\get_environment_type() === 'local' ? true : [
 			'required' => [
 				'super-admin',
 				'administrator',

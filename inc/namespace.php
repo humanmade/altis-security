@@ -108,10 +108,6 @@ function remove_2fa_dummy_provider( array $providers ) : array {
  * @return bool
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
-	if ( maybe_skip_two_factor_forcing_for_local_env() ) {
-		return false;
-	}
-
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( is_array( $config ) && ( ! empty( $config['required'] ) && is_bool( $config['required'] ) ) ) {
 		return $config['required'];
@@ -128,10 +124,6 @@ function override_two_factor_universally_forced( bool $is_forced ) : bool {
  * @return array|null
  */
 function override_two_factor_forced_user_roles( $roles ) {
-	if ( maybe_skip_two_factor_forcing_for_local_env() ) {
-		return [];
-	}
-
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
 	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
 		return $config['required'];
