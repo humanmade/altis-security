@@ -109,7 +109,7 @@ function remove_2fa_dummy_provider( array $providers ) : array {
  */
 function override_two_factor_universally_forced( bool $is_forced ) : bool {
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
-	if ( is_array( $config ) && ( ! empty( $config['required'] ) && is_bool( $config['required'] ) ) ) {
+	if ( is_array( $config ) && ( isset( $config['required'] ) && is_bool( $config['required'] ) ) ) {
 		return $config['required'];
 	}
 
