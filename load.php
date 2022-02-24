@@ -35,6 +35,7 @@ add_action( 'altis.modules.init', function () {
 			],
 			'frame-options-header' => true,
 			'nosniff-header' => true,
+			'strict-transport-security' => false,
 			'xss-protection-header' => true,
 		],
 	];
