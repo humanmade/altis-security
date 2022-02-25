@@ -53,7 +53,7 @@ function force_enable( $should_enable ) {
 	$env_config = Altis\get_config()['environments'][ $environment ]['modules']['security']['basic-auth'] ?? [];
 
 	// If there's no config, use the existing values.
-	if ( ! is_array( $env_config ) ) {
+	if ( empty( $env_config ) || ! is_array( $env_config ) ) {
 		return $should_enable;
 	}
 
