@@ -16,6 +16,7 @@ use Altis;
  */
 function bootstrap() {
 	add_action( 'hmauth_action_before_dev_env_check', __NAMESPACE__ . '\\define_credentials' );
+	add_filter( 'hmauth_filter_dev_env', __NAMESPACE__ . '\\force_enable' );
 }
 
 /**
@@ -39,4 +40,22 @@ function define_credentials() {
 
 	defined( 'HM_BASIC_AUTH_USER' ) or define( 'HM_BASIC_AUTH_USER', $config['username'] );
 	defined( 'HM_BASIC_AUTH_PW' ) or define( 'HM_BASIC_AUTH_PW', $config['password'] );
+}
+
+/**
+ * Force the use of basic auth, even in production, if configured.
+ *
+ * @param bool $should_enable Should Basic Auth be enabled?
+ * @return bool Existing value by default.
+ */
+function force_enable( $should_enable ) {
+	$environment = Altis\get_environment_type();
+	$env_config = Altis\get_config()['environments'][ $environment ]['modules']['security']['basic-auth'] ?? [];
+
+	// If there's no config, use the existing values.
+	if ( empty( $env_config ) || ! is_array( $env_config ) ) {
+		return $should_enable;
+	}
+
+	return true;
 }
