@@ -2,10 +2,12 @@
 /**
  * Tests for Altis Security module's require-login works.
  *
- *
  * phpcs:disable WordPress.Files, WordPress.NamingConventions, PSR1.Classes.ClassDeclaration.MissingNamespace, HM.Functions.NamespacedFunctions
  */
 
+/**
+ * Tests for Altis Security module's require-login works.
+ */
 class RequireLoginCest {
 
 	/**
@@ -29,7 +31,7 @@ class RequireLoginCest {
 	/**
 	 * Confirm when require-login in enable, login form is visible.
 	 *
-	 * @param AcceptanceTester $I Tester
+	 * @param AcceptanceTester $I Tester.
 	 *
 	 * @return void
 	 */

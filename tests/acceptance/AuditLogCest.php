@@ -8,6 +8,9 @@
 
 use Codeception\Util\Locator;
 
+/**
+ * Tests for Altis Security module's audit log.
+ */
 class AuditLogCest {
 
 	/**
