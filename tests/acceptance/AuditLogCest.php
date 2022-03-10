@@ -14,14 +14,14 @@ use Codeception\Util\Locator;
 class AuditLogCest {
 
 	/**
-	 * Create a new post to confirm the action shows in the audit log.
+	 * Create a new post to add the action to the audit log.
 	 *
 	 * @param AcceptanceTester $I Tester
 	 *
 	 * @return void
 	 */
 	public function testCreatePostForAuditLog( AcceptanceTester $I ) {
-		$I->wantToTest( 'Create a new post to confirm the action shows in the audit log.' );
+		$I->wantToTest( 'Create a new post to add the action to the audit log.' );
 		$I->loginAsAdmin();
 
 		// Go to new post page.
@@ -45,14 +45,14 @@ class AuditLogCest {
 	}
 
 	/**
-	 * Confirm recent actions show in the audit log.
+	 * Confirm recent actions and filtering in the audit log.
 	 *
 	 * @param AcceptanceTester $I Tester
 	 *
 	 * @return void
 	 */
 	public function testConfirmActionsInAuditLog( AcceptanceTester $I ) {
-		$I->wantToTest( 'I want to check that recent actions are appearing in the audit log.' );
+		$I->wantToTest( 'I want to view recent actions and filtering in the audit log.' );
 		$I->loginAsAdmin();
 
 		// Go to the Audit Log.
@@ -60,44 +60,6 @@ class AuditLogCest {
 
 		// Check if the audit log contains the recently published post.
 		$I->see( '"Test audit log" post published' );
-	}
-
-	/**
-	 * Confirm search works in the audit log.
-	 *
-	 * @param AcceptanceTester $I Tester
-	 *
-	 * @return void
-	 */
-	public function testConfirmSearchWorksInAuditLog( AcceptanceTester $I ) {
-		$I->wantToTest( 'I want to search in the audit log.' );
-		$I->loginAsAdmin();
-
-		// Go to the Audit Log.
-		$I->amOnAdminPage( 'network/admin.php?page=wp_stream' );
-
-		// Fill in the search form.
-		$I->click( '#record-search-input' );
-		$I->type( 'Test audit log' );
-		$I->click( '#search-submit' );
-
-		// Check if the audit log contains the recently published post.
-		$I->see( '"Test audit log" post published' );
-	}
-
-	/**
-	 * Confirm filtering works in the audit log.
-	 *
-	 * @param AcceptanceTester $I Tester
-	 *
-	 * @return void
-	 */
-	public function testFilteringWorksInAuditLog( AcceptanceTester $I ) {
-		$I->wantToTest( 'I want to filter results in the audit log.' );
-		$I->loginAsAdmin();
-
-		// Go to the Audit Log.
-		$I->amOnAdminPage( 'network/admin.php?page=wp_stream' );
 
 		// Set filters for "Today".
 		$I->click( '.actions .date-interval' );
@@ -107,6 +69,14 @@ class AuditLogCest {
 
 		// Click to apply filters.
 		$I->click( '#record-query-submit' );
+
+		// Check if the audit log contains the recently published post.
+		$I->see( '"Test audit log" post published' );
+
+		// Fill in the search form.
+		$I->click( '#record-search-input' );
+		$I->type( 'Test audit log' );
+		$I->click( '#search-submit' );
 
 		// Check if the audit log contains the recently published post.
 		$I->see( '"Test audit log" post published' );
