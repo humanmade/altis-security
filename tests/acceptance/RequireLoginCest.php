@@ -39,7 +39,7 @@ class RequireLoginCest {
 		$I->wantToTest( 'Confirm when require-login in enable, login form is visible.' );
 		$I->amOnPage( '/' );
 
-		// I can see the login form
+		// I can see the login form.
 		$I->seeElement( '#loginform' );
 	}
 
