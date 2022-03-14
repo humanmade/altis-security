@@ -26,7 +26,7 @@
 		"altis/browser-security": "^1.2.0",
 		"humanmade/disable-accounts": "^0.2.1",
 		"humanmade/php-basic-auth": "^1.1.6",
-		"humanmade/require-login": "~1.0.4",
+		"humanmade/require-login": "~1.0.5",
 		"humanmade/two-factor": "^0.3.0",
 		"xwp/stream": "^3.8.2"
 	},
