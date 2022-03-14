@@ -6,6 +6,8 @@ PHP Basic Auth allows an engineering team to restrict access to a site using bas
 
 **Note:** The authentication username and password _must_ be defined or basic authentication will not be active.
 
+**Note:** Enabling PHP Basic Auth will prevent your site from being indexed with search engines.
+
 ## Configuration
 
 By default, PHP Basic Auth is disabled. To enable it, a value must be passed to `security.php-basic-auth`, either `true` or an array that includes a username and password.
