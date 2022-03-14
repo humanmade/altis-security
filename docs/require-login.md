@@ -4,7 +4,7 @@ By default, all websites are publicly accessible. In some situations, you may wa
 
 Environments running in Cloud that are not of type `production` have the `require-login` feature enabled by default.
 
-**Note:** Enabling Require Login will prevent your site from being indexed with search engines.
+**Note:** Enabling Require Login for an environment will prevent it from being indexed with search engines.
 
 ## Controlling Site Access
 
