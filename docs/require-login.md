@@ -4,7 +4,10 @@ By default, all websites are publicly accessible. In some situations, you may wa
 
 Environments running in Cloud that are not of type `production` have the `require-login` feature enabled by default.
 
-**Note:** Enabling Require Login for an environment will prevent it from being indexed with search engines.
+Enabling Require Login for an environment will also prevent it from being indexed with search engines.
+
+**Note:** Require Login only applies to URLs served from your [application servers](docs://cloud/architecture.md), and will not apply to `/uploads/` or `/tachyon/` URLs.
+
 
 ## Controlling Site Access
 
