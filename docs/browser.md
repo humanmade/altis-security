@@ -181,17 +181,27 @@ In some cases, you may want to adjust or disable these headers depending on the 
 
 The [`Strict-Transport-Security` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) (sometimes called HSTS) is used to enforce HTTPS (TLS/SSL) connections when loading a site and can be used to enhance the site's security.
 
-By default, Altis does not enable HSTS. You can set the value of this header manually by defining the `ABS_HSTS` constant:
+By default, Altis enables HSTS by default with the value `max-age=31536000; includeSubDomains`. You can configure the header using the `strict-transport-policy` setting:
 
-```php
-define( 'ABS_HSTS', 'max-age=31536000; includeSubDomains' );
+```json
+{
+	"browser": {
+		"strict-transport-policy": "max-age=3600"
+	}
+}
 ```
 
-To disable the automatic behaviour entirely, set the constant to `false`:
+You can also switch the header off entirely by setting this to false:
 
-```php
-define( 'ABS_HSTS', false );
+```json
+{
+	"browser": {
+		"strict-transport-policy": false
+	}
+}
 ```
+
+Finally, if you set the value to `null` then Altis will send the header if the current request is using SSL.
 
 
 #### X-Content-Type-Options
