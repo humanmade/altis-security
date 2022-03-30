@@ -35,7 +35,7 @@ add_action( 'altis.modules.init', function () {
 			],
 			'frame-options-header' => true,
 			'nosniff-header' => true,
-			'strict-transport-security' => 'max-age=31536000; includeSubDomains',
+			'strict-transport-security' => Altis\get_environment_type() === 'local' ? false : 'max-age=31536000; includeSubDomains',
 			'xss-protection-header' => true,
 		],
 	];
