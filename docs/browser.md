@@ -181,7 +181,7 @@ In some cases, you may want to adjust or disable these headers depending on the 
 
 The [`Strict-Transport-Security` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) (sometimes called HSTS) is used to enforce HTTPS (TLS/SSL) connections when loading a site and can be used to enhance the site's security.
 
-By default, Altis enables HSTS by default with the value `max-age=31536000; includeSubDomains`. You can configure the header using the `strict-transport-policy` setting:
+By default, Altis enables HSTS with the value `max-age=31536000; includeSubDomains`. You can configure the header using the `strict-transport-policy` setting:
 
 ```json
 {
@@ -191,7 +191,7 @@ By default, Altis enables HSTS by default with the value `max-age=31536000; incl
 }
 ```
 
-You can also switch the header off entirely by setting this to false:
+You can also switch the header off completely by setting this to false:
 
 ```json
 {
@@ -201,7 +201,7 @@ You can also switch the header off entirely by setting this to false:
 }
 ```
 
-Finally, if you set the value to `null` then Altis will send the header if the current request is using SSL.
+Finally, if you set the value to `null` then Altis _will_ send the header but only if the current request is already using HTTPS.
 
 
 #### X-Content-Type-Options
