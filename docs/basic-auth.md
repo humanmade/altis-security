@@ -13,7 +13,7 @@ Altis provides support for Basic Authentication access control, which uses [stan
 
 By default, Basic authentication is disabled. To enable it, a value must be passed to `security.php-basic-auth`; either `true` or an array that includes a username and password.
 
-The recommended setup is to define everything in your `composer.json` file, including the username and passwords. The same configuration in the below, manual setup example could be handled in the Composer file like this:
+The recommended setup is to define everything in your `composer.json` file, including the username and passwords. The same configuration in the manual setup example below, could be handled in the Composer file like this:
 
 ```json
 {
