@@ -28,7 +28,7 @@
 		"humanmade/php-basic-auth": "^1.1.7",
 		"humanmade/require-login": "~1.0.5",
 		"humanmade/two-factor": "^0.3.0",
-		"xwp/stream": "^3.9.0"
+		"xwp/stream": "^3.9.1"
 	},
 	"extra": {
 		"altis": {
