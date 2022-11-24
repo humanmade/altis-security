@@ -38,6 +38,7 @@ function on_plugins_loaded() {
 
 	if ( ! is_site_public() ) {
 		require_once Altis\ROOT_DIR . '/vendor/humanmade/require-login/plugin.php';
+		Require_Login\bootstrap();
 	}
 
 	if ( $config['audit-log'] ) {
