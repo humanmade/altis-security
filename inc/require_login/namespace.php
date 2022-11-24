@@ -35,7 +35,7 @@ function allow_request_for_valid_token( array $allowed, ?string $page ) : array 
 	 *
 	 * @param array $tokens Array of string tokens that by pass require login.
 	 */
-	$tokens = apply_filters( 'altis.security.require-login.bypass-tokens', $tokens );
+	$tokens = apply_filters( 'altis.security.require_login.bypass_tokens', $tokens );
 
 	if (
 		isset( $_GET[ QUERY_ARG ] ) &&
