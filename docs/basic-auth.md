@@ -60,7 +60,7 @@ Manual setup involves a simpler configuration in your `composer.json` but an add
 This _turns on_ the Basic Auth component, but does not define the username and password. Without the username and password, basic authentication will not be required. To specify the username and password in this configuration, you must add them as PHP constants to a file in the `.config/` directory (e.g. `.config/load.php` or a file required by `.config/load.php`). The following example is recommended:
 
 ```php
-if ( in_array( \Altis\get_environment_type(), [ 'staging', 'development' ] ) {
+if ( in_array( \Altis\get_environment_type(), [ 'staging', 'development' ], true ) ) {
 	define( 'HM_BASIC_AUTH_USER', 'altisusername' );
 	define( 'HM_BASIC_AUTH_PW', 'altispassword' );
 }
