@@ -29,7 +29,7 @@ function on_plugins_loaded() {
 
 	if ( $config['browser'] ) {
 		// Work around incorrectly documented key.
-		// https://github.com/humanmade/altis-security/issues/235
+		// See https://github.com/humanmade/altis-security/issues/235 !
 		if ( isset( $config['browser']['strict-transport-policy'] ) && ! isset( $config['browser']['strict-transport-security'] ) ) {
 			$config['browser']['strict-transport-security'] = $config['browser']['strict-transport-policy'];
 		}
