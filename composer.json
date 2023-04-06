@@ -24,7 +24,7 @@
 		"php": ">=7.1",
 		"bjeavons/zxcvbn-php": "^1.1.0",
 		"altis/browser-security": "^2.0.2",
-		"humanmade/disable-accounts": "^0.2.1",
+		"humanmade/disable-accounts": "^0.2.2",
 		"humanmade/php-basic-auth": "^1.1.7",
 		"humanmade/require-login": "~1.0.5",
 		"humanmade/two-factor": "^0.3.2",
