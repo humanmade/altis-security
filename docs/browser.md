@@ -249,3 +249,40 @@ This should generally always be sent. If you need to disable it, set `browser.xs
 	}
 }
 ```
+
+### Restrict CORS origins
+
+By default, WordPress will allow REST API requests from any origin. You can add a filter to `altis.security.browser.rest_allow_origin` to restrict [CORS origins](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). 
+
+To completely disallow external requests, set the filter to `false`:
+
+```php
+add_filter( 'altis.security.browser.rest_allow_origin', '__return_false' );
+```
+
+To allow specific origins only:
+```php
+add_filter( 'altis.security.browser.rest_allow_origin', function ( bool $allow, string $origin ) : bool {
+
+	$allowed_origins = [
+		'https://www.example.com',
+	];
+
+	if ( in_array( $origin, $allow_origins, true ) ) {
+		return true;
+	}
+
+    return false;
+}, 10, 2 );
+```
+
+To disallow all .local domains:
+```php
+add_filter( 'altis.security.browser.rest_allow_origin', function ( bool $allow, string $origin ) : bool {
+    if ( false !== strpos( $origin, '.local' ) ) {
+        return false;
+    }
+
+    return $allow;
+}, 10, 2 );
+```
