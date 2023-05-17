@@ -50,7 +50,7 @@ function define_credentials() {
  */
 function force_enable( $should_enable ) {
 	$environment = Altis\get_environment_type();
-	$env_config = Altis\get_config()['environments'][ $environment ]['modules']['security']['basic-auth'] ?? [];
+	$env_config = Altis\get_config()['environments'][ $environment ]['modules']['security']['php-basic-auth'] ?? [];
 
 	// If there's no config, use the existing values.
 	if ( empty( $env_config ) || ! is_array( $env_config ) ) {
