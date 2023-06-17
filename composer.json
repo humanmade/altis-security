@@ -13,7 +13,8 @@
 		"files": [
 			"inc/namespace.php",
 			"inc/passwords/namespace.php",
-			"inc/php_basic_auth/namespace.php"
+			"inc/php_basic_auth/namespace.php",
+			"inc/require_login/namespace.php"
 		],
 		"classmap": [
 			"inc/",
