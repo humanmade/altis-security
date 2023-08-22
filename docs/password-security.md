@@ -50,7 +50,7 @@ password strength score for administrators or for specific capabilities.
 ```php
 add_filter( 'altis.security.passwords.is_weak', function ( bool $is_weak, string $password, WP_User $user, array $results ) {
 	if ( $user->has_cap( 'publish_newsletter' ) && ( $results['score'] < 4 ) ) {
-			return true;
+		return true;
 	}
 
 	return $is_weak;
