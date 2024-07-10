@@ -15,6 +15,36 @@ Requiring login on individual sites is as easy as unchecking the site's public s
 
 ## Excluding Pages and Endpoints
 
+There are 2 ways to exclude pages and endpoints from requiring login, using the `bypass-tokens` config option or the `hm-require-login.allowed_pages` filter.
+
+### Bypass Tokens
+
+Bypass tokens are a way to allow tools like Lighthouse or Qualys access to development or staging environments using a unique query string token. This lets you check performance insights on non-production environments for non-logged in users so you can see the experience most site visitors will get.
+
+Set the `require-login` config value as an object with the property `bypass-tokens`. This should be an array of string tokens that can be set as the value of the query variable `altis-auth`.
+
+For example with the following config a development URL like `https://project-dev.altis.cloud/?altis-auth=gf6sa9fgds7a9bhfdb` will bypass the login requirement:
+
+```json
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"require-login": {
+						"bypass-tokens": [
+							"gf6sa9fgds7a9bhfdb"
+						]
+					}
+				}
+			}
+		}
+	}
+}
+```
+
+### Allowed Pages Filter
+
 In certain cases you may need to exclude a URL or PHP file from redirecting to the login page when Require Login is active. This is possible using the `hm-require-login.allowed_pages` filter:
 
 ```php
