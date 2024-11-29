@@ -136,7 +136,7 @@ function override_two_factor_forced_user_roles( $roles ) {
 		return [];
 	}
 
-	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
+	if ( is_array( $config['required'] ) ) {
 		return $config['required'];
 	}
 
