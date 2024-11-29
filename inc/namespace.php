@@ -131,6 +131,11 @@ function override_two_factor_universally_forced( bool $is_forced ) : bool {
  */
 function override_two_factor_forced_user_roles( $roles ) {
 	$config = Altis\get_config()['modules']['security']['2-factor-authentication'];
+
+	if ( isset( $config['required'] ) && $config['required'] === false ) {
+		return [];
+	}
+
 	if ( ! empty( $config['required'] ) && is_array( $config['required'] ) ) {
 		return $config['required'];
 	}
