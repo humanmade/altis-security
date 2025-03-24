@@ -289,7 +289,7 @@ add_filter( 'altis.security.browser.rest_allow_origin', function ( bool $allow, 
         'https://www.example.com',
     ];
 
-    if ( in_array( $origin, $allow_origins, true ) ) {
+    if ( in_array( $origin, $allowed_origins, true ) ) {
         return true;
     }
 
