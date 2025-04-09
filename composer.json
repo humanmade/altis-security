@@ -21,7 +21,7 @@
 		]
 	},
 	"require": {
-		"php": ">=7.1",
+		"php": ">=8.2",
 		"bjeavons/zxcvbn-php": "^1.4.2",
 		"altis/browser-security": "^2.1.0",
 		"humanmade/disable-accounts": "^0.2.2",
