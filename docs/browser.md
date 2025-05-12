@@ -166,6 +166,10 @@ set_hash_for_style( 'my-handle', 'sha384-...' );
 Automatically-generated hashes are automatically cached in the object cache, linked to the filename and version of the script or
 stylesheet.
 
+Because of this, it is crucial to update the version query var when you change a CSS, JS or other static asset.
+Failing to do so will prevent the hash from being refreshed, causing a mismatch with the updated file and leading to an
+'invalid integrity hash' error in the browser.
+
 You can disable the automatic generation of the integrity hashes if desired by setting `browser.automatic-integrity` to `false`:
 
 ```json
