@@ -47,6 +47,6 @@ the `modules.security.2-factor-authentication.required` array:
     }
 }
 ```
-## Disable Two Factor Authentication
+## Disabling Two Factor Authentication
 
 To disable Two Factor Authentication, set the `modules.security.2-factor-authentication` setting to `false`.
