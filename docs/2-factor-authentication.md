@@ -4,8 +4,6 @@ For increased security of user authentication, Altis supports the use of a secon
 Factor Authentication feature is enabled by default, and only required for network administrators and site administrators by
 default.
 
-To disable Two Factor Authentication, set the `modules.security.2-factor-authentication` setting to `false`.
-
 Second factor authentication options are Email, Time-based one-time passwords and FIDO Universal 2nd Factor (U2F).
 
 Two Factor methods can be configured by each user in their Edit Profile page in the CMS.
@@ -49,3 +47,6 @@ the `modules.security.2-factor-authentication.required` array:
     }
 }
 ```
+## Disable Two Factor Authentication
+
+To disable Two Factor Authentication, set the `modules.security.2-factor-authentication` setting to `false`.
