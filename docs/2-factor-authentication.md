@@ -57,7 +57,6 @@ To disable Two Factor Authentication, set the `modules.security.2-factor-authent
         "security": {
             "2-factor-authentication": false
                 "required": false
-            }
         }
     }
 }
