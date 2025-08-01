@@ -55,7 +55,7 @@ To disable Two Factor Authentication, set the `modules.security.2-factor-authent
 "altis": {
     "modules": {
         "security": {
-            "2-factor-authentication": {
+            "2-factor-authentication": false
                 "required": false
             }
         }
