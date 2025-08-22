@@ -96,6 +96,11 @@ function override_network_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
 	}
 
 	$wp_admin_bar->remove_menu( 'network-admin-stream' );
+
+	if ( ! current_user_can( wp_stream_get_instance()->admin->view_cap ) ) {
+		return;
+	}
+
 	$href = add_query_arg(
 		[
 			'page' => wp_stream_get_instance()->admin->records_page_slug,
