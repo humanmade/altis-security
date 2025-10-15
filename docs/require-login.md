@@ -5,7 +5,9 @@ website. This is especially useful when in pre-launch mode.
 
 Environments running in Cloud that are not of type `production` have the `require-login` feature enabled by default.
 
-Enabling Require Login for an environment will also prevent it from being indexed with search engines.
+Enabling Require Login for an environment will also prevent it from being indexed by search engines. Note: Although you can
+uncheck the "Discourage search engines from indexing this site" option in the Reading Settings admin page of a site, this will have
+no effect if Require Login is enabled. The option will remain checked.
 
 **Note:** Require Login only applies to URLs served from your [application servers](docs://cloud/architecture.md), and will not
 apply to `/uploads/` or `/tachyon/` URLs.
