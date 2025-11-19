@@ -41,6 +41,11 @@ function bootstrap() {
 	add_action( 'network_admin_menu', __NAMESPACE__ . '\\remove_stream_admin_pages', 11 );
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
 	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
+
+	// Initialise Action Scheduler first so Stream can initialise.
+	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/vendor/woocommerce/action-scheduler/action-scheduler.php';
+	action_scheduler_register_3_dot_8_dot_1();
+	action_scheduler_initialize_3_dot_8_dot_1();
 	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/stream.php';
 }
 
