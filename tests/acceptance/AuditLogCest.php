@@ -31,6 +31,10 @@ class AuditLogCest {
 		$I->click( '.editor-post-title__input' );
 		$I->type( 'Test audit log' );
 
+		// Close the settings sidebar if open (it can overlap the publish button).
+		$I->executeJS( "document.querySelector('button[aria-label=\"Close Settings\"]')?.click();" );
+		$I->wait( 0.5 );
+
 		// Publish the post.
 		$I->click( '.editor-post-publish-button__button' );
 		$I->click( '.editor-post-publish-panel__header-publish-button .editor-post-publish-button__button' );
