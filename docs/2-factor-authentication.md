@@ -20,11 +20,15 @@ require all users of the site enable two factor authentication set the `modules.
 to `true`:
 
 ```json
-"altis": {
-    "modules": {
-        "security": {
-            "2-factor-authentication": {
-                "required": true
+{
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "2-factor-authentication": {
+                        "required": true
+                    }
+                }
             }
         }
     }
@@ -35,15 +39,19 @@ Alternatively, to require two factor authentication only for specific user roles
 the `modules.security.2-factor-authentication.required` array:
 
 ```json
-"altis": {
-    "modules": {
-        "security": {
-            "2-factor-authentication": {
-                "required": [
-                    "super-admin",
-                    "administrator",
-                    "editor"
-                ]
+{
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "2-factor-authentication": {
+                        "required": [
+                            "super-admin",
+                            "administrator",
+                            "editor"
+                        ]
+                    }
+                }
             }
         }
     }

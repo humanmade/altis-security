@@ -56,18 +56,20 @@ environments except for local to require login:
 
 ```json
 {
-    "altis": {
-        "modules": {
-            "security": {
-                "require-login": true
-            }
-        }
-    },
-    "environments": {
-        "local": {
+    "extra": {
+        "altis": {
             "modules": {
                 "security": {
-                    "require-login": false
+                    "require-login": true
+                }
+            },
+            "environments": {
+                "local": {
+                    "modules": {
+                        "security": {
+                            "require-login": false
+                        }
+                    }
                 }
             }
         }
