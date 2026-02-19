@@ -21,13 +21,19 @@ To set browser security settings, set values in your `composer.json` configurati
 }
 ```
 
-**Note:** In this document, we'll only show the `browser` configuration for brevity.
-
 You can also disable browser security altogether by setting `browser` to `false`:
 
 ```json
 {
-    "browser": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": false
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -50,14 +56,22 @@ under `extra.altis.modules.security.browser.content-security-policy`:
 
 ```json
 {
-    "browser": {
-        "content-security-policy": {
-            "base-uri": [
-                "self"
-            ],
-            "object-src": [
-                "none"
-            ]
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "content-security-policy": {
+                            "base-uri": [
+                                "self"
+                            ],
+                            "object-src": [
+                                "none"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -69,22 +83,30 @@ should be either a string or list of strings:
 
 ```json
 {
-    "browser": {
-        "content-security-policy": {
-            "base-uri": [
-                "self"
-            ],
-            "object-src": [
-                "none"
-            ],
-            "font-src": [
-                "https://fonts.gstatic.com",
-                "https://cdnjs.cloudflare.com"
-            ],
-            "script-src": [
-                "https:",
-                "unsafe-inline"
-            ]
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "content-security-policy": {
+                            "base-uri": [
+                                "self"
+                            ],
+                            "object-src": [
+                                "none"
+                            ],
+                            "font-src": [
+                                "https://fonts.gstatic.com",
+                                "https://cdnjs.cloudflare.com"
+                            ],
+                            "script-src": [
+                                "https:",
+                                "unsafe-inline"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -174,8 +196,16 @@ You can disable the automatic generation of the integrity hashes if desired by s
 
 ```json
 {
-    "browser": {
-        "automatic-integrity": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "automatic-integrity": false
+                    }
+                }
+            }
+        }
     }
 }
 ```
@@ -198,8 +228,16 @@ the `strict-transport-security` setting:
 
 ```json
 {
-    "browser": {
-        "strict-transport-security": "max-age=3600"
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "strict-transport-security": "max-age=3600"
+                    }
+                }
+            }
+        }
     }
 }
 ```
@@ -208,8 +246,16 @@ You can also switch the header off completely by setting this to false:
 
 ```json
 {
-    "browser": {
-        "strict-transport-security": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "strict-transport-security": false
+                    }
+                }
+            }
+        }
     }
 }
 ```
@@ -228,8 +274,16 @@ set `browser.nosniff-header` to `false`:
 
 ```json
 {
-    "browser": {
-        "nosniff-header": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "nosniff-header": false
+                    }
+                }
+            }
+        }
     }
 }
 ```
@@ -245,8 +299,16 @@ header, set `browser.frame-options-header` to `false`:
 
 ```json
 {
-    "browser": {
-        "frame-options-header": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "frame-options-header": false
+                    }
+                }
+            }
+        }
     }
 }
 ```
@@ -263,8 +325,16 @@ This should generally be sent. If you need to disable it, set `browser.xss-prote
 
 ```json
 {
-    "browser": {
-        "xss-protection-header": false
+    "extra": {
+        "altis": {
+            "modules": {
+                "security": {
+                    "browser": {
+                        "xss-protection-header": false
+                    }
+                }
+            }
+        }
     }
 }
 ```
