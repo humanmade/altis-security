@@ -16,6 +16,7 @@ use ZxcvbnPhp\Zxcvbn;
  */
 function bootstrap() {
 	add_action( 'check_passwords', __NAMESPACE__ . '\\enforce_password_strength', 10, 3 );
+	add_action( 'validate_password_reset', __NAMESPACE__ . '\\enforce_reset_password_strength', 10, 2 );
 	add_action( 'admin_print_styles-user-edit.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
 	add_action( 'admin_print_styles-profile.php', __NAMESPACE__ . '\\hide_weak_password_prompt' );
 	add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\hide_weak_password_prompt' );
@@ -110,6 +111,32 @@ function enforce_password_strength( $user_login, &$pass1, &$pass2 ) {
 	$pass1 = null;
 	$pass2 = null;
 	add_action( 'user_profile_update_errors', __NAMESPACE__ . '\\add_strength_error' );
+}
+
+/**
+ * Enforce minimum password strength in the reset-password flow.
+ *
+ * @param WP_Error $errors Password reset validation errors.
+ * @param WP_User|WP_Error $user User to reset the password for, or WP_Error.
+ */
+function enforce_reset_password_strength( WP_Error $errors, $user ) {
+	if ( ! $user instanceof \WP_User ) {
+		// Invalid reset key or missing user, handled by WordPress.
+		return;
+	}
+
+	$pass1 = isset( $_POST['pass1'] ) ? wp_unslash( $_POST['pass1'] ) : null;
+	$pass2 = isset( $_POST['pass2'] ) ? wp_unslash( $_POST['pass2'] ) : null;
+	if ( empty( $pass1 ) || $pass1 !== $pass2 ) {
+		// Handled by WordPress, skip.
+		return;
+	}
+
+	// Reuse the existing password strength enforcement path.
+	enforce_password_strength( $user->user_login, $pass1, $pass2 );
+	if ( empty( $pass1 ) ) {
+		add_strength_error( $errors );
+	}
 }
 
 /**
