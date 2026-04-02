@@ -43,10 +43,38 @@ function bootstrap() {
 	add_action( 'admin_bar_menu', __NAMESPACE__ . '\\override_network_admin_bar_menu', 100 );
 	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
 
-	// Initialise Action Scheduler first so Stream can initialise.
+	// Initialise Action Scheduler so Stream can use its API functions (e.g. as_enqueue_async_action).
+	// Requiring action-scheduler.php adds hooks on plugins_loaded at priority 0,
+	// but we're already past that, so we must manually trigger registration and initialization.
+	// The register function name includes the version number (e.g. action_scheduler_register_3_dot_9_dot_3)
+	// and changes with each release, so we find it dynamically to avoid breakage on updates.
 	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/vendor/woocommerce/action-scheduler/action-scheduler.php';
-	action_scheduler_register_3_dot_8_dot_1();
-	action_scheduler_initialize_3_dot_8_dot_1();
+	$as_versions = \ActionScheduler_Versions::instance();
+	if ( ! $as_versions->latest_version() ) {
+		foreach ( get_defined_functions()['user'] as $func ) {
+			if ( strpos( $func, 'action_scheduler_register_' ) === 0 ) {
+				call_user_func( $func );
+				break;
+			}
+		}
+	}
+	\ActionScheduler_Versions::initialize_latest_version();
+
+	// Disable the Action Scheduler queue runner cron event unless another plugin needs it.
+	// AS is only needed here for Stream's API functions, not for processing queued actions.
+	$config = Altis\get_config()['modules']['security'];
+	if ( $config['disable-action-scheduler-cron'] ?? true ) {
+		add_action( 'init', function () {
+			if ( class_exists( 'ActionScheduler', false ) ) {
+				remove_action( 'init', [ \ActionScheduler::runner(), 'init' ], 1 );
+				$timestamp = wp_next_scheduled( 'action_scheduler_run_queue', [ 'WP Cron' ] );
+				if ( $timestamp ) {
+					wp_unschedule_event( $timestamp, 'action_scheduler_run_queue', [ 'WP Cron' ] );
+				}
+			}
+		}, 0 );
+	}
+
 	require_once Altis\ROOT_DIR . '/vendor/xwp/stream/stream.php';
 }
 
