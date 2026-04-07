@@ -15,6 +15,7 @@ add_action( 'altis.modules.init', function () {
 		'require-login'             => ! in_array( Altis\get_environment_type(), [ 'production', 'local' ], true ),
 		'php-basic-auth'            => false,
 		'audit-log'                 => true,
+		'disable-action-scheduler-cron' => true,
 		'disable-accounts'          => true,
 		'2-factor-authentication'   => Altis\get_environment_type() === 'local' ? true : [
 			'required' => [
