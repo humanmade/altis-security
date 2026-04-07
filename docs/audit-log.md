@@ -46,3 +46,23 @@ detailed documentation on [creating custom Connectors](https://github.com/xwp/st
 Stream plugin documentation.
 
 Once registered, your custom Stream Connector's records will be part of the Audit Log with the same data integrity guarantees.
+
+## Action Scheduler
+
+The Audit Log plugin (Stream) bundles [Action Scheduler](https://actionscheduler.org/) as a dependency. By default, Altis disables the Action Scheduler queue runner cron event (`action_scheduler_run_queue`) since it is not needed for core audit logging functionality.
+
+If another plugin in your project requires Action Scheduler's queue processing, you can re-enable it in your Altis configuration:
+
+```json
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"security": {
+					"disable-action-scheduler-cron": false
+				}
+			}
+		}
+	}
+}
+```
