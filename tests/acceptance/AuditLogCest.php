@@ -27,9 +27,15 @@ class AuditLogCest {
 		// Go to new post page.
 		$I->amOnAdminPage( 'post-new.php' );
 
-		// Add a title.
+		// The block editor canvas is iframed since WP 6.3 — the title input
+		// lives inside the `editor-canvas` iframe and is unreachable from the
+		// main frame.
+		$I->waitForElement( 'iframe[name="editor-canvas"]', 10 );
+		$I->switchToIFrame( 'editor-canvas' );
+		$I->waitForElement( '.editor-post-title__input', 10 );
 		$I->click( '.editor-post-title__input' );
 		$I->type( 'Test audit log' );
+		$I->switchToIFrame();
 
 		// Close the settings sidebar if open (it can overlap the publish button).
 		$I->executeJS( "document.querySelector('button[aria-label=\"Close Settings\"]')?.click();" );
