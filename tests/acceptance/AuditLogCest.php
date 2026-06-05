@@ -27,9 +27,15 @@ class AuditLogCest {
 		// Go to new post page.
 		$I->amOnAdminPage( 'post-new.php' );
 
-		// Add a title.
-		$I->click( '.editor-post-title__input' );
+		// Add a title. WP7 uses an iframed editor canvas so the title field is
+		// inside iframe[name="editor-canvas"] rather than the main document.
+		$I->waitForElement( 'iframe[name="editor-canvas"]', 30 );
+		$I->wait( 2 );
+		$I->switchToIframe( 'editor-canvas' );
+		$I->waitForElement( '[aria-label="Add title"], h1.wp-block-post-title', 10 );
+		$I->click( '[aria-label="Add title"], h1.wp-block-post-title' );
 		$I->type( 'Test audit log' );
+		$I->switchToIframe(); // back to main frame
 
 		// Close the settings sidebar if open (it can overlap the publish button).
 		$I->executeJS( "document.querySelector('button[aria-label=\"Close Settings\"]')?.click();" );
