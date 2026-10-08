@@ -49,20 +49,8 @@ Once registered, your custom Stream Connector's records will be part of the Audi
 
 ## Action Scheduler
 
-The Audit Log plugin (Stream) bundles [Action Scheduler](https://actionscheduler.org/) as a dependency. By default, Altis disables the Action Scheduler queue runner cron event (`action_scheduler_run_queue`) since it is not needed for core audit logging functionality.
+The Audit Log plugin (Stream) can use [Action Scheduler](https://actionscheduler.org/) for deferred work, but Altis does not load it. Audit Log records are kept indefinitely, so Altis turns off Stream's automatic purge, and Stream uses WP-Cron for any deferred work instead.
 
-If another plugin in your project requires Action Scheduler's queue processing, you can re-enable it in your Altis configuration:
+Other plugins can continue to use Action Scheduler if they need it, such as WooCommerce, which loads its own copy. Altis does not interfere with them.
 
-```json
-{
-	"extra": {
-		"altis": {
-			"modules": {
-				"security": {
-					"disable-action-scheduler-cron": false
-				}
-			}
-		}
-	}
-}
-```
+Earlier versions allowed this behaviour to be changed with the `extra.altis.modules.security.disable-action-scheduler-cron` setting. That setting no longer has any effect, and you can safely remove it from your `composer.json`.
