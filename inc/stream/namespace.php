@@ -43,7 +43,7 @@ function bootstrap() {
 	add_filter( 'wp_stream_record_array', __NAMESPACE__ . '\\filter_wp_stream_record_array', 10, 1 );
 
 	// Records are kept indefinitely in a write-only log, so Stream's purge job has nothing to
-	// delete. Stop it being scheduled and use WP-Cron (Cavalcade) rather than Action Scheduler.
+	// delete. Stop it being scheduled and don't load Action Scheduler.
 	// Stream reads these filters when its plugin file loads, so they must be added first.
 	add_filter( 'wp_stream_enable_auto_purge', '__return_false' );
 	add_filter( 'wp_stream_use_action_scheduler', '__return_false' );
